@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ミッション — SWAN WORKS</title>
+<meta name="description" content="SWAN WORKSのミッション。AIのすごい力を、詳しくない人にこそ届ける。">
+<link rel="icon" href="logo/swanworks_round_01.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#071522;--navy2:#0C2036;--navy3:#12304C;--blue:#2F6EA6;--blueL:#5B9BD5;--gold:#C8A24A;--goldL:#E7CE86;--ink:#14212D;--soft2:#93A6B7;--line:#E2E9F0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Montserrat,"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",system-ui,sans-serif;color:#dbe6f0;background:var(--navy);line-height:1.95;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:900px;margin:0 auto;padding:0 24px}
+  .wide{max-width:1140px}
+  .serif{font-family:'Cinzel',serif}
+  .eyebrow{font-size:12px;letter-spacing:.3em;font-weight:800;color:var(--goldL)}
+  /* nav */
+  nav{position:sticky;top:0;z-index:100;background:rgba(7,21,34,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,162,74,.18)}
+  nav .inner{max-width:1140px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+  .logo-nav{display:flex;align-items:center;gap:12px}
+  .logo-nav img{height:40px;border-radius:8px}
+  .logo-nav span{color:#fff;font-weight:800;font-size:17px;letter-spacing:.08em}
+  nav .links{display:flex;gap:26px;align-items:center}
+  nav .links a{color:#c3d2e0;font-size:14px;font-weight:600}
+  nav .links a:hover{color:var(--goldL)}
+  .navcta{border-radius:9999px;font-weight:800;font-size:13.5px;padding:10px 20px;background:linear-gradient(135deg,var(--gold),var(--goldL));color:var(--navy)!important}
+  @media(max-width:720px){nav .links a.hidesp{display:none}}
+  /* hero */
+  .phead{text-align:center;padding:90px 0 60px;position:relative;overflow:hidden}
+  .phead .glow{position:absolute;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(47,110,166,.3),transparent 62%);top:-240px;left:50%;transform:translateX(-50%)}
+  .phead .inner{position:relative;z-index:2}
+  .phead h1{font-size:52px;font-weight:800;color:#fff;line-height:1.25;margin-top:16px}
+  .phead h1 .g{background:linear-gradient(135deg,var(--goldL),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .phead .tagline{color:#aebfcf;font-size:17px;margin-top:20px}
+  @media(max-width:720px){.phead h1{font-size:34px}}
+  /* sections */
+  section{padding:70px 0}
+  .alt{background:var(--navy2)}
+  h2{font-size:32px;font-weight:800;color:#fff;line-height:1.4;margin-bottom:22px}
+  h2 em{font-style:normal;color:var(--goldL)}
+  h3{font-size:21px;font-weight:800;color:#fff;margin:28px 0 12px}
+  p{font-size:16px;color:#b9c9d8;margin-bottom:18px}
+  .big{font-size:19px;color:#d5e2ee;font-weight:600}
+  .lead-quote{border-left:4px solid var(--gold);padding:14px 24px;margin:24px 0;background:rgba(200,162,74,.06);border-radius:0 12px 12px 0;font-size:18px;color:#e6eef6}
+  .divider{width:60px;height:3px;background:linear-gradient(90deg,var(--gold),var(--goldL));margin:0 auto 24px}
+  /* number blocks */
+  .steps{display:grid;grid-template-columns:1fr;gap:18px;margin-top:30px}
+  .step{display:flex;gap:20px;background:linear-gradient(160deg,#0D2338,#0A1A2C);border:1px solid rgba(200,162,74,.18);border-radius:16px;padding:26px 28px}
+  .step .no{flex:0 0 54px;height:54px;width:54px;border-radius:14px;background:linear-gradient(135deg,var(--gold),var(--goldL));color:var(--navy);font-weight:900;font-size:22px;display:flex;align-items:center;justify-content:center}
+  .step h3{margin:0 0 6px}
+  .step p{margin:0;font-size:15px}
+  /* stat */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+  .stat{text-align:center;background:linear-gradient(160deg,#0D2338,#0A1A2C);border:1px solid rgba(91,155,213,.2);border-radius:16px;padding:28px 20px}
+  .stat .n{font-family:'Cinzel';font-size:40px;font-weight:900;color:var(--goldL)}
+  .stat .l{font-size:13px;color:#9fb2c3;margin-top:6px}
+  @media(max-width:720px){.stats{grid-template-columns:1fr}}
+  .svgcard{background:linear-gradient(160deg,#0A1C2E,#12304C);border:1px solid rgba(200,162,74,.18);border-radius:20px;padding:34px;margin:30px 0}
+  .backlink{display:inline-block;margin-top:10px;color:var(--goldL);font-weight:700;font-size:14px}
+  /* footer */
+  footer{background:#050F19;color:#8ea1b3;padding:46px 0 40px;font-size:13px}
+  footer .fl{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  footer .fl img{height:36px;border-radius:8px}
+  footer .fl span{color:#fff;font-weight:800}
+  footer .copy{border-top:1px solid rgba(255,255,255,.08);margin-top:20px;padding-top:20px;color:#5f7385}
+  .cta-final{background:linear-gradient(135deg,var(--navy3),var(--blue));text-align:center;border-radius:22px;padding:52px 30px;margin:20px auto}
+  .cta-final h2{margin-bottom:12px}
+  .cta-final .btn{display:inline-block;border-radius:9999px;font-weight:800;padding:14px 32px;background:linear-gradient(135deg,var(--gold),var(--goldL));color:var(--navy);margin-top:10px}
+</style>
+  <link rel="stylesheet" href="preregister.css">
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="index.html" class="logo-nav"><img src="logo/swanworks_round_01.png" alt="SWAN WORKS"><span>SWAN WORKS</span></a>
+    <div class="links">
+      <a href="index.html">ホーム</a>
+      <a href="index.html#products" class="hidesp">プロダクト</a>
+      <a href="mission.html">ミッション</a>
+      <a href="philosophy.html" class="hidesp">私たちの考え</a>
+      <a href="mailto:swanworks.jp@gmail.com" class="navcta">お問い合わせ</a>
+    </div>
+  </div>
+</nav>
+
+<header class="phead">
+  <div class="glow"></div>
+  <div class="inner container">
+    <span class="eyebrow">OUR MISSION</span>
+    <h1>AIのすごい力を、<br><span class="g">"詳しくない人"</span>にこそ届ける。</h1>
+    <p class="tagline">SWAN WORKSが、なぜ生まれ、どこへ向かうのか。</p>
+  </div>
+</header>
+
+<!-- 1 -->
+<section>
+  <div class="container">
+    <span class="eyebrow">01 ── なぜ、私たちは生まれたのか</span>
+    <h2>AIの時代に、<em>置いていかれる人</em>がいる。</h2>
+    <p class="big">ここ数年で、AIは世界を一変させました。文章を書き、絵を描き、膨大なデータを一瞬で読み解く。「魔法のような道具」が、誰の手にも届く時代になったのです。</p>
+    <p>けれど、本当にそうでしょうか。私たちは、身近な人たちの声に立ち止まりました。「AIがすごいのは分かるけど、何をどう使えばいいのか分からない」「専門用語ばかりで、最初の一歩が踏み出せない」「若い人や詳しい人だけのものでしょう？」——。</p>
+    <p>便利になったはずのテクノロジーが、逆に"分かる人"と"分からない人"の差を広げている。この静かな断絶を、私たちは見過ごせませんでした。SWAN WORKSは、その隙間を埋めるために生まれたブランドです。</p>
+    <div class="lead-quote">「AIの恩恵は、一部の詳しい人だけのものではない。むしろ、日々の"めんどくさい"や"不安"に追われている人にこそ、届くべきだ」——それが、私たちの出発点です。</div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="alt">
+  <div class="container">
+    <span class="eyebrow">02 ── 私たちが見つけた、たったひとつの答え</span>
+    <h2>「何でもできる」を、<br><em>「これができる」</em>に翻訳する。</h2>
+    <p>汎用的なAIは、白紙のキャンバスのようなものです。何でも描ける。でも、絵を描いたことのない人に真っ白なキャンバスと絵の具を渡しても、多くの人は筆を止めてしまう。「何を、どう描けばいいの？」と。</p>
+    <p>私たちの答えはシンプルでした。<strong style="color:#fff">AIを、目的をひとつに絞った"専用機"にすればいい。</strong>写真の加工なら「撮るだけ」、記事づくりなら「テーマを選ぶだけ」。やることが明確なら、AIに詳しくなくても、誰でもその力を100%引き出せます。</p>
+    <div class="svgcard">
+      <svg viewBox="0 0 800 210" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,sans-serif">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E7CE86"/><stop offset="1" stop-color="#C8A24A"/></linearGradient>
+        <marker id="a" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#E7CE86"/></marker></defs>
+        <circle cx="110" cy="110" r="66" fill="none" stroke="#3A5A78" stroke-width="2" stroke-dasharray="5 6"/>
+        <text x="110" y="98" fill="#8FB0CC" font-size="15" text-anchor="middle" font-weight="700">汎用AI</text>
+        <text x="110" y="132" fill="#5B7C98" font-size="40" text-anchor="middle" font-weight="800">?</text>
+        <text x="110" y="195" fill="#7f9bb3" font-size="12" text-anchor="middle">万能ゆえに、迷う</text>
+        <path d="M195 120 H605" stroke="url(#g1)" stroke-width="3" marker-end="url(#a)"/>
+        <text x="400" y="96" fill="#E7CE86" font-size="21" text-anchor="middle" font-weight="800">SWAN WORKS が</text>
+        <text x="400" y="122" fill="#E7CE86" font-size="21" text-anchor="middle" font-weight="800">"専用機"にする</text>
+        <rect x="640" y="52" width="116" height="116" rx="20" fill="none" stroke="url(#g1)" stroke-width="3"/>
+        <text x="698" y="102" fill="#E7CE86" font-size="15" text-anchor="middle" font-weight="700">目的ひとつ</text>
+        <circle cx="698" cy="126" r="15" fill="none" stroke="#5B9BD5" stroke-width="3"/>
+        <path d="M690 126 l6 6 l10 -12" stroke="#5B9BD5" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="698" y="195" fill="#9fc3e6" font-size="12" text-anchor="middle">迷わず、使える</text>
+      </svg>
+    </div>
+    <p>白鳥（SWAN)が水面を優雅に進むように——水面下の複雑な動き（AIの高度な処理)はすべて隠し、ユーザーには"優雅でかんたんな体験"だけを見せる。それが、私たちのものづくりの哲学であり、ブランド名の由来でもあります。</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section>
+  <div class="container">
+    <span class="eyebrow">03 ── 私たちが届ける、4つの体験</span>
+    <h2>機能ではなく、<em>体験</em>を届ける。</h2>
+    <p>私たちは「高機能なアプリ」を作りたいのではありません。使った人の毎日が、少しでも軽く、楽しく、安心になること。SWAN WORKSのすべてのプロダクトは、次の4つのうち、必ずどれかを実現します。</p>
+    <div class="steps">
+      <div class="step"><div class="no">1</div><div><h3>めんどくさいを、消す</h3><p>手間と時間のかかる作業を、AIがまるごと肩代わり。あなたは、本当にやりたいことに集中できます。（パシャっと出品／クイマ／ソラモト)</p></div></div>
+      <div class="step"><div class="no">2</div><div><h3>たのしみを、増やす</h3><p>趣味や娯楽を、AIがもっと面白く、もっと深く。夢中になれる時間を、そっと後押しします。（未来競馬)</p></div></div>
+      <div class="step"><div class="no">3</div><div><h3>まなびを、深める</h3><p>理解と上達を、AIが隣で加速。知る喜び、できるようになる実感を、誰にでも。（株スク)</p></div></div>
+      <div class="step"><div class="no">4</div><div><h3>不安を、安心安全へ</h3><p>「忘れたらどうしよう」「一人のときに何かあったら」。そんな日々の不安を、AIの力で少しでも和らげたい。（VoiceKey／MIMAMORO)</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="alt">
+  <div class="container">
+    <span class="eyebrow">04 ── 私たちが目指す未来</span>
+    <h2>「AIが苦手」という言葉が、<br><em>なくなる日</em>まで。</h2>
+    <p>いつか、「私はAIが苦手だから」という言葉が、誰の口からも出なくなる日。そんな未来を、私たちは本気で信じています。特別な知識がなくても、若くなくても、詳しくなくても——誰もが当たり前に、AIの恩恵を受けている世界。</p>
+    <p>そのために私たちは、ひとつずつ、丁寧に"専用機"を作り続けます。派手さより、確かさを。機能の多さより、迷わなさを。SWAN WORKSという名前が、「これなら私にも使える」の代名詞になるまで。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1つ</div><div class="l">目的をひとつに絞る</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">むずかしい設定はゼロに</div></div>
+      <div class="stat"><div class="n">∞</div><div class="l">届けたい人に、限りはない</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="container">
+    <div class="cta-final">
+      <h2>その"めんどくさい"、私たちに教えてください。</h2>
+      <p>次にどんな専用機を作るか。そのヒントは、いつもあなたの毎日の中にあります。</p>
+      <a class="btn" href="mailto:swanworks.jp@gmail.com">お問い合わせ・ご意見はこちら</a><br>
+      <a class="backlink" href="philosophy.html">→ 私たちの"ものづくりの考え"も読む</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container wide">
+    <div class="fl"><img src="logo/swanworks_round_01.png" alt="SWAN WORKS"><span>SWAN WORKS</span></div>
+    <div>AIを、あなたの専用機に。</div>
+    <div class="copy">© 2026 SWAN WORKS（運営：諏訪光則）　お問い合わせ：swanworks.jp@gmail.com</div>
+  </div>
+</footer>
+
+<script src="preregister.js" defer></script>
+</body>
+</html>

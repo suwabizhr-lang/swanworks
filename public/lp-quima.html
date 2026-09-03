@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>クイマ — お店の集客を、AIにまかせる。｜SWAN WORKS</title>
+<meta name="description" content="クイマは、お店の情報とキャンペーンを入力するだけで、SNS集客記事とPR動画を自動生成する"集客の専用機"。予約・問い合わせなどの申込フォームまでワンストップ。">
+<link rel="icon" href="assets/quima-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#161616;--ink2:#242424;--ink3:#2E2E2E;--yellow:#FFE600;--yellowD:#B89B00;--grey:#F4F4F4;--greyM:#4F4F4F;--line:#333;--lineL:#E4E4E4;--paper:#fff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Montserrat,"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.9;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:960px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:12px;letter-spacing:.2em;font-weight:800;color:var(--ink);background:var(--yellow);display:inline-block;padding:3px 12px;border-radius:6px}
+  .dark .eyebrow{color:var(--yellow);background:rgba(255,230,0,.12)}
+  nav{position:sticky;top:0;z-index:100;background:rgba(22,22,22,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  nav .inner{max-width:1140px;margin:0 auto;padding:11px 24px;display:flex;align-items:center;justify-content:space-between}
+  .logo-nav{display:flex;align-items:center;gap:10px}.logo-nav img{height:34px}.logo-nav .txt{color:#fff;font-weight:900;font-size:19px;letter-spacing:-.5px}
+  .logo-nav small{color:var(--greyM);font-size:11px;font-weight:700;margin-left:2px}
+  nav .links{display:flex;gap:20px;align-items:center}nav .links a{color:#ccc;font-size:14px;font-weight:700}nav .links a:hover{color:var(--yellow)}
+  .navcta{border-radius:9999px;font-weight:800;font-size:13px;padding:10px 20px;background:var(--yellow);color:var(--ink)!important}
+  @media(max-width:720px){nav .links a.hidesp{display:none}}
+  /* hero */
+  .hero{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:74px 0 82px;text-align:center}
+  .hero::before{content:"";position:absolute;top:-140px;right:-100px;width:420px;height:420px;background:radial-gradient(circle,rgba(255,230,0,.16),transparent 62%)}
+  .hero::after{content:"";position:absolute;bottom:-120px;left:-80px;width:360px;height:360px;background:radial-gradient(circle,rgba(255,230,0,.08),transparent 62%)}
+  .hero .in{position:relative;z-index:2}
+  .hero .logoicon{width:88px;height:88px;border-radius:22px;box-shadow:0 12px 34px rgba(0,0,0,.5);margin-bottom:22px}
+  .hero h1{font-size:50px;font-weight:900;line-height:1.2;letter-spacing:-.5px}
+  .hero h1 .y{color:var(--yellow)}
+  .hero .sub{font-size:18px;margin:22px auto 0;max-width:640px;color:#bdbdbd}
+  .hero .st{margin-top:18px;display:inline-block;font-size:12px;font-weight:800;background:rgba(255,255,255,.1);border-radius:9999px;padding:5px 16px;color:#ddd}
+  .cta-btns{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;border-radius:9999px;font-weight:800;font-size:15px;padding:15px 34px;background:var(--yellow);color:var(--ink);transition:transform .15s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,230,0,.35)}
+  .btn.ghost{background:transparent;color:#fff;border:1.5px solid #555}
+  .btn.ghost:hover{border-color:var(--yellow);box-shadow:none}
+  @media(max-width:720px){.hero h1{font-size:31px}}
+  section{padding:64px 0}
+  .grey{background:var(--grey)}
+  .dark{background:var(--ink);color:#fff}
+  h2{font-size:32px;font-weight:900;color:var(--ink);line-height:1.35;margin-bottom:18px;letter-spacing:-.5px}h2 em{font-style:normal;background:var(--yellow);padding:0 6px;border-radius:4px}
+  .dark h2{color:#fff}.dark h2 em{color:var(--ink)}
+  h3{font-size:20px;font-weight:800;margin:20px 0 10px}
+  p{font-size:16px;color:#3a3a3a;margin-bottom:16px}.dark p{color:#c4c4c4}.big{font-size:19px;font-weight:800;color:var(--ink)}.dark .big{color:#fff}
+  .lead-quote{border-left:5px solid var(--yellow);padding:14px 22px;margin:22px 0;background:#FFFDE6;border-radius:0 10px 10px 0;font-size:17px;color:var(--ink);font-weight:600}
+  .dark .lead-quote{background:rgba(255,230,0,.08);color:#fff}
+  .center-head{text-align:center;max-width:740px;margin:0 auto 40px}
+  .pains{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+  .pain{background:#fff;border:1px solid var(--lineL);border-radius:14px;padding:26px 22px}
+  .pain .no{font-size:12px;font-weight:800;color:var(--ink);background:var(--yellow);display:inline-block;padding:2px 8px;border-radius:5px}.pain h3{font-size:17px;margin:10px 0 6px}.pain p{font-size:14px;margin:0;color:var(--greyM)}
+  @media(max-width:760px){.pains{grid-template-columns:1fr}}
+  .weapons{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+  .wp{background:#fff;border-radius:16px;padding:28px 24px;border:2px solid var(--ink);text-align:center}
+  .wp .ic{width:56px;height:56px;margin:0 auto 14px}
+  .wp h3{font-size:18px;margin:0 0 8px}.wp p{font-size:14px;color:var(--greyM);margin:0}
+  @media(max-width:760px){.weapons{grid-template-columns:1fr}}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+  .fstep{background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:22px 16px;text-align:center}
+  .fstep .n{width:40px;height:40px;border-radius:11px;background:var(--yellow);color:var(--ink);font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+  .fstep h4{font-size:14px;font-weight:800;margin-bottom:6px;color:#fff}.fstep p{font-size:12px;color:#a8a8a8;margin:0}
+  @media(max-width:820px){.flow{grid-template-columns:1fr 1fr}}
+  .steps-big .sb{display:flex;gap:20px;align-items:flex-start;background:#fff;border:1px solid var(--lineL);border-radius:16px;padding:26px;margin-bottom:14px}
+  .steps-big .no{flex:0 0 48px;height:48px;width:48px;border-radius:13px;background:var(--ink);color:var(--yellow);font-weight:900;font-size:20px;display:flex;align-items:center;justify-content:center}
+  .steps-big h3{margin:0 0 6px}.steps-big p{margin:0;font-size:14.5px;color:var(--greyM)}
+  table{width:100%;border-collapse:collapse;margin-top:20px;background:#fff;border-radius:14px;overflow:hidden;font-size:14.5px;border:1px solid var(--lineL)}
+  th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--lineL)}
+  th{background:var(--ink);color:#fff;font-weight:800}th:last-child{background:var(--yellow);color:var(--ink)}
+  td:first-child{color:var(--greyM);font-weight:700}
+  .yes{color:#1B9E5A;font-weight:800}.no{color:#D64545;font-weight:800}
+  .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+  .case{background:#fff;border:1px solid var(--lineL);border-radius:14px;padding:24px}
+  .case .tag{font-size:11px;font-weight:800;color:var(--ink);background:var(--yellow);padding:2px 8px;border-radius:5px}.case h3{font-size:17px;margin:8px 0}.case p{font-size:13.5px;color:var(--greyM);margin:0}
+  @media(max-width:760px){.cases{grid-template-columns:1fr}}
+  details{background:#fff;border:1px solid var(--lineL);border-radius:12px;padding:18px 22px;margin-bottom:12px}
+  summary{color:var(--ink);font-weight:800;font-size:15.5px;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}
+  summary::before{content:"Q  ";color:var(--yellowD);font-weight:900}
+  details p{margin:12px 0 0;font-size:14.5px;color:var(--greyM)}
+  /* pricing plans */
+  .plans{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:24px;align-items:stretch}
+  .plan{background:#fff;border:1px solid var(--lineL);border-radius:14px;padding:22px 16px;display:flex;flex-direction:column}
+  .plan.reco{border:2px solid var(--ink)}
+  .plan.prem{border:2px solid var(--yellowD);background:#FFFEF3}
+  .plan .ribbon{font-size:10px;font-weight:900;color:var(--ink);background:var(--yellow);border-radius:5px;padding:2px 8px;align-self:flex-start;margin-bottom:8px}
+  .plan .pn{font-weight:900;font-size:16px;color:var(--ink)}
+  .plan .pp{font-size:24px;font-weight:900;color:var(--ink);margin:6px 0 2px}.plan .pp small{font-size:12px;color:var(--greyM);font-weight:700}
+  .plan ul{list-style:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--lineL);flex:1}
+  .plan li{font-size:12.5px;color:#3a3a3a;padding:4px 0;display:flex;justify-content:space-between;gap:6px}
+  .plan li b{color:var(--ink)}
+  .plan .vhi{background:#FFF7C2;margin:6px -8px 0;padding:8px;border-radius:8px;font-size:11.5px;color:#5a5320;font-weight:700;text-align:center;display:block}
+  @media(max-width:900px){.plans{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.plans{grid-template-columns:1fr}}
+  .cta-final{background:var(--yellow);text-align:center;border-radius:22px;padding:56px 30px;color:var(--ink);margin-top:10px}
+  .cta-final h2{color:var(--ink);margin-bottom:12px}.cta-final h2 em{background:var(--ink);color:var(--yellow)}
+  .cta-final p{color:#4a4a2a}.cta-final .btn{background:var(--ink);color:var(--yellow)}
+  .backlink{display:inline-block;margin-top:14px;color:var(--ink);font-weight:800;font-size:14px}
+  /* video hero section */
+  .vfeature{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  .vfeature::before{content:"";position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,230,0,.12),transparent 62%)}
+  .vfeature .in{position:relative;z-index:2}
+  .vbadge{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.14em;color:var(--ink);background:var(--yellow);padding:5px 16px;border-radius:9999px;margin-bottom:18px}
+  .vfeature h2{font-size:38px;color:#fff;line-height:1.3}
+  .vfeature h2 .y{background:none;color:var(--yellow);padding:0}
+  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+  .vcard{background:var(--ink2);border:1px solid var(--line);border-radius:16px;padding:28px 22px}
+  .vcard .ic{width:52px;height:52px;margin-bottom:14px}
+  .vcard h3{color:var(--yellow);font-size:17px;font-weight:800;margin-bottom:8px}
+  .vcard p{color:#c4c4c4;font-size:14px;margin:0}
+  @media(max-width:760px){.vgrid{grid-template-columns:1fr}}
+  .vsteps{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:36px}
+  .vs{background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:18px 22px;text-align:center;min-width:140px}
+  .vs .t{color:#fff;font-weight:800;font-size:15px}.vs .d{color:#9a9a9a;font-size:12px;margin-top:4px}
+  .vs.big{background:var(--yellow);border-color:var(--yellow)}.vs.big .t{color:var(--ink)}.vs.big .d{color:#5a5320}
+  .varrow{color:var(--yellow);font-size:22px;font-weight:900}
+  .promobox{margin-top:40px;background:linear-gradient(135deg,#2A2600,#1A1800);border:1.5px solid var(--yellow);border-radius:20px;padding:34px;text-align:center}
+  .promobox .lbl{color:var(--yellow);font-weight:900;font-size:13px;letter-spacing:.1em}
+  .promobox h3{color:#fff;font-size:24px;margin:8px 0 10px}
+  .promobox p{color:#d0d0d0;font-size:15px;max-width:640px;margin:0 auto 18px}
+  .promobox .btn{background:var(--yellow);color:var(--ink)}
+  footer{background:var(--ink);color:#8a8a8a;padding:44px 0;font-size:13px;border-top:1px solid var(--line)}
+  footer .fl{display:flex;align-items:center;gap:12px;margin-bottom:10px}footer .fl img{height:32px;border-radius:8px}footer .fl span{color:#fff;font-weight:800}
+  footer .copy{border-top:1px solid var(--line);margin-top:18px;padding-top:18px;color:#5f5f5f}
+</style>
+  <link rel="stylesheet" href="preregister.css">
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="index.html" class="logo-nav"><img src="assets/quima-icon.png" alt="クイマ"><span class="txt">Quima</span><small>by SWAN WORKS</small></a>
+    <div class="links">
+      <a href="index.html">ホーム</a>
+      <a href="index.html#products" class="hidesp">プロダクト</a>
+      <a href="mailto:swanworks.jp@gmail.com" class="navcta">先行案内を受け取る</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero dark">
+  <div class="in container">
+    <img class="logoicon" src="assets/quima-icon.png" alt="クイマ">
+    <h1>お店の集客を、<br><span class="y">まるごとAIに。</span></h1>
+    <p class="sub">お店の情報とキャンペーンを入れるだけ。SNS集客記事もPR動画も申込フォームも、AIが一気に作る"集客の専用機"。もう、一人で抱え込まない。</p>
+    <div class="st">開発中 ／ 近日公開予定</div>
+    <div class="cta-btns">
+      <a href="#flow" class="btn">仕組みを見る</a>
+      <a href="mailto:swanworks.jp@gmail.com" class="btn ghost">先行案内を受け取る</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <span class="eyebrow">THE PROBLEM ── 小さなお店の、大きな悩み</span>
+    <h2 style="margin-top:16px">いい商品も、<em>知られなければ</em>意味がない。</h2>
+    <p class="big">お店を営む人の多くが、集客に頭を悩ませています。SNSが大事なのは分かる。でも、投稿を作る時間も、動画を編集するスキルも、広告に回すお金も、そう簡単には用意できません。</p>
+    <div class="pains">
+      <div class="pain"><div class="no">PAIN 01</div><h3>投稿を作る時間がない</h3><p>接客や仕入れに追われ、SNSは後回し。気づけば何週間も更新が止まっている。</p></div>
+      <div class="pain"><div class="no">PAIN 02</div><h3>動画編集ができない</h3><p>「動画が伸びる」と聞いても、撮影も編集もハードルが高くて手が出せない。</p></div>
+      <div class="pain"><div class="no">PAIN 03</div><h3>外注はお金がかかる</h3><p>制作会社に頼めば月に何万円も。小さなお店に、その余裕はなかなかない。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="grey">
+  <div class="container">
+    <span class="eyebrow">THE SOLUTION ── クイマができること</span>
+    <h2 style="margin-top:16px">入力するのは、<em>お店のことだけ</em>。<br>集客の素材は、AIが全部つくる。</h2>
+    <p>クイマは、お店の情報とキャンペーンを登録するだけで、集客に必要な素材を一式まるごと自動生成します。マーケの知識も、動画編集のスキルも、いりません。</p>
+    <div class="lead-quote">「クイック（すばやく)」に「マーケティング」を。忙しい現場のための、いちばん速い集客の相棒。それが、クイマです。</div>
+    <div class="weapons">
+      <div class="wp">
+        <svg class="ic" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="36" height="36" rx="6" fill="none" stroke="#161616" stroke-width="3"/><path d="M18 22 h20 M18 30 h20 M18 38 h12" stroke="#E6CF00" stroke-width="3" stroke-linecap="round"/></svg>
+        <h3>① SNS集客記事</h3>
+        <p>Instagram・X・LINEなど、チャネルごとに最適な文字数・トーンで投稿文を自動作成。</p>
+      </div>
+      <div class="wp">
+        <svg class="ic" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="14" width="40" height="30" rx="5" fill="none" stroke="#161616" stroke-width="3"/><path d="M24 24 l12 7 l-12 7 Z" fill="#E6CF00"/></svg>
+        <h3>② PR動画</h3>
+        <p>写真にテロップ・動き・BGM・字幕をAIが合成。編集スキルなしで、PR動画が完成。</p>
+      </div>
+      <div class="wp">
+        <svg class="ic" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="8" width="28" height="40" rx="5" fill="none" stroke="#161616" stroke-width="3"/><path d="M22 22 h12 M22 30 h12" stroke="#161616" stroke-width="3" stroke-linecap="round"/><circle cx="28" cy="40" r="2.5" fill="#E6CF00"/></svg>
+        <h3>③ 申込・予約フォーム</h3>
+        <p>予約・問い合わせ・申込を受け取る専用フォームとQRを発行。見た人を、そのままお客様へ。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO FEATURE (プレミアム誘導の核) -->
+<section class="vfeature">
+  <div class="in container">
+    <div class="center-head" style="max-width:820px">
+      <span class="vbadge">★ クイマ最大の武器</span>
+      <h2>ゼロから、<span class="y">"広告になる動画"</span>が生まれる。</h2>
+      <p style="color:#c4c4c4">記事や投稿はもちろん、クイマの真価は<strong style="color:#fff">AIによる動画（リール・YouTube)生成</strong>にあります。素材ゼロの状態（0→1)から、SNSでそのまま伸びる縦型ショートや、<strong style="color:#fff">そのまま広告として出稿できるクオリティ</strong>の動画を生み出します。撮影も編集も、外注も不要。これが、マーケティング会社を泣かせる理由です。</p>
+    </div>
+
+    <div class="vgrid">
+      <div class="vcard">
+        <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="12" width="40" height="28" rx="5" fill="none" stroke="#FFE600" stroke-width="3"/><path d="M22 22 l10 6 l-10 6 Z" fill="#FFE600"/></svg>
+        <h3>0→1で、動画を生成</h3>
+        <p>「素材がないから作れない」はもう終わり。テーマと情報を入れるだけで、AIが構成から映像まで一気に作り上げます。</p>
+      </div>
+      <div class="vcard">
+        <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><path d="M26 6 l5 12 l13 1 l-10 9 l3 13 l-11 -7 l-11 7 l3 -13 l-10 -9 l13 -1 Z" fill="none" stroke="#FFE600" stroke-width="2.5" stroke-linejoin="round"/></svg>
+        <h3>広告に出せるクオリティ</h3>
+        <p>ただの自動生成ではありません。リール・YouTube広告として実際に出稿できる完成度。制作会社の納品物に迫る仕上がりです。</p>
+      </div>
+      <div class="vcard">
+        <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><path d="M10 30 l8 8 l24 -26" stroke="#FFE600" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>投稿も広告も、一気通貫</h3>
+        <p>SNS投稿用のショートも、広告用の動画も、同じ流れで。作った動画を"広告にまで昇華"できる導線を、一つのツールで。</p>
+      </div>
+    </div>
+
+    <div class="vsteps">
+      <div class="vs"><div class="t">素材ゼロ</div><div class="d">写真も動画もなくてOK</div></div>
+      <span class="varrow">→</span>
+      <div class="vs"><div class="t">AIが生成</div><div class="d">構成・映像・BGM・字幕</div></div>
+      <span class="varrow">→</span>
+      <div class="vs"><div class="t">SNS投稿</div><div class="d">リール・ショート</div></div>
+      <span class="varrow">→</span>
+      <div class="vs big"><div class="t">広告に昇華</div><div class="d">そのまま出稿できる</div></div>
+    </div>
+
+    <div class="promobox">
+      <div class="lbl">PREMIUM / BUSINESS 限定</div>
+      <h3>この"AI動画生成"は、プレミアム以上で。</h3>
+      <p>高品質なAI動画を生み出す「AI動画クレジット」は、<strong style="color:#FFE600">プレミアム（¥9,980/月)以上</strong>でご利用いただけます。制作会社に動画を1本頼めば数万円〜。プレミアムなら、月額1本分ほどの料金で<strong style="color:#fff">何本もの広告級動画</strong>が作れる計算です。マーケの常識が、変わります。</p>
+      <a class="btn" href="#pricing">プレミアムの内容を見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="flow">
+  <div class="container">
+    <div class="center-head">
+      <span class="eyebrow">HOW IT WORKS ── 集客素材ができるまで</span>
+      <h2 style="margin-top:16px">お店の情報を入れて、<em>あとは待つだけ</em>。</h2>
+    </div>
+    <div class="flow">
+      <div class="fstep"><div class="n">1</div><h4>お店を登録</h4><p>店名・業種・特徴を入力。写真もアップ。</p></div>
+      <div class="fstep"><div class="n">2</div><h4>キャンペーン設定</h4><p>「今なら20%オフ」等の推し施策を入力。</p></div>
+      <div class="fstep"><div class="n">3</div><h4>AIが自動生成</h4><p>記事・動画・フォームを一式まるごと作成。</p></div>
+      <div class="fstep"><div class="n">4</div><h4>確認して配信</h4><p>内容を確認し、SNSへ投稿・フォーム公開。</p></div>
+    </div>
+    <p style="margin-top:26px;text-align:center;color:#9a9a9a;font-size:14px">※ 配信は必ずご自身の確認・操作のもとで行います。プラットフォームの規約に沿った範囲で運用し、無理な自動化はしません。</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="center-head">
+      <span class="eyebrow">WHY QUIMA ── クイマならではの強み</span>
+      <h2 style="margin-top:16px">ただの投稿ツールじゃない。<br><em>"来店・申込"まで</em>設計する。</h2>
+    </div>
+    <div class="steps-big">
+      <div class="sb"><div class="no">A</div><div><h3>チャネル別に"刺さる"言葉で書く</h3><p>Instagram・X・LINEでは響く言葉が違います。クイマは各SNSに合わせて文字数もトーンも自動で最適化。「どこに何を書けば？」の悩みが消えます。</p></div></div>
+      <div class="sb"><div class="no">B</div><div><h3>動画編集ゼロで、PR動画が完成</h3><p>写真を用意するだけ。AIがテロップ・動き・BGM・字幕まで合成し、SNSでそのまま使えるPR動画に仕上げます。</p></div></div>
+      <div class="sb"><div class="no">C</div><div><h3>"見た人"を"申し込む人"に変える</h3><p>投稿に予約・問い合わせ・申込フォームのQRを紐づけ、興味を持った人をその場でお客様に変える導線まで用意します。</p></div></div>
+      <div class="sb"><div class="no">D</div><div><h3>どんな業種にも、幅広く使える</h3><p>フォームを「予約」「相談」「申込」などに差し替えるだけで、飲食・サロン・教室・小売・EC・士業など、さまざまな業態の集客に応用できます。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="grey">
+  <div class="container">
+    <span class="eyebrow">COMPARISON ── 他の手段と、どう違う？</span>
+    <h2 style="margin-top:16px">制作会社より安く、<br>自分でやるより<em>ずっと速い</em>。</h2>
+    <table>
+      <tr><th>　</th><th>自分で作る</th><th>制作会社に外注</th><th>クイマ</th></tr>
+      <tr><td>コスト</td><td class="yes">無料</td><td class="no">月数万円〜</td><td class="yes">手頃な月額</td></tr>
+      <tr><td>スピード</td><td class="no">何日もかかる</td><td class="no">依頼〜納品に数日</td><td class="yes">その日のうちに</td></tr>
+      <tr><td>必要スキル</td><td class="no">文章・動画編集</td><td class="yes">不要</td><td class="yes">不要（入力だけ）</td></tr>
+      <tr><td>動画も作れる</td><td class="no">編集が大変</td><td>追加料金が多い</td><td class="yes">標準で作れる</td></tr>
+      <tr><td>申込導線</td><td class="no">別途用意が必要</td><td>別料金のことも</td><td class="yes">フォーム込み</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="container">
+    <span class="eyebrow">PRICING ── 料金プラン</span>
+    <h2 style="margin-top:16px">初期費用0円。<em>月額だけ</em>で、<br>制作会社の何十分の一に。</h2>
+    <p class="big">クイマは、月額のサブスクリプション。導入費も初期費用も0円です。無料から始められ、いつでも解約OK。</p>
+    <div class="plans">
+      <div class="plan">
+        <div class="pn">フリー</div><div class="pp">¥0</div>
+        <ul>
+          <li>店舗<b>1</b></li><li>QR/URL<b>1</b></li><li>記事<b>5</b></li><li>広告文<b>5</b></li><li>広告動画<b>5</b></li><li>AI-BGM動画<b>—</b></li><li>AI動画生成<b>—</b></li>
+        </ul>
+      </div>
+      <div class="plan">
+        <div class="pn">ライト</div><div class="pp">¥2,980<small>/月</small></div>
+        <ul>
+          <li>店舗<b>1</b></li><li>QR/URL<b>3</b></li><li>記事<b>50</b></li><li>広告文<b>50</b></li><li>広告動画<b>30</b></li><li>AI-BGM動画<b>5</b></li><li>AI動画生成<b>—</b></li>
+        </ul>
+      </div>
+      <div class="plan reco">
+        <div class="ribbon">おすすめ</div>
+        <div class="pn">スタンダード</div><div class="pp">¥4,980<small>/月</small></div>
+        <ul>
+          <li>店舗<b>3</b></li><li>QR/URL<b>10</b></li><li>記事<b>200</b></li><li>広告文<b>200</b></li><li>広告動画<b>100</b></li><li>AI-BGM動画<b>20</b></li><li>AI動画生成<b>—</b></li>
+        </ul>
+      </div>
+      <div class="plan prem">
+        <div class="ribbon">動画生成 ★</div>
+        <div class="pn">プレミアム</div><div class="pp">¥9,980<small>/月</small></div>
+        <ul>
+          <li>店舗<b>10</b></li><li>QR/URL<b>無制限</b></li><li>記事<b>無制限</b></li><li>広告文<b>無制限</b></li><li>広告動画<b>無制限</b></li><li>AI-BGM動画<b>無制限</b></li>
+        </ul>
+        <span class="vhi">🎬 AI動画 1,500pt/月<br>≒10秒動画 標準約5本／高画質約3本</span>
+      </div>
+      <div class="plan prem">
+        <div class="ribbon">動画生成 ★★</div>
+        <div class="pn">ビジネス</div><div class="pp">¥29,800<small>/月</small></div>
+        <ul>
+          <li>店舗<b>無制限</b></li><li>QR/URL<b>無制限</b></li><li>記事<b>無制限</b></li><li>広告文<b>無制限</b></li><li>広告動画<b>無制限</b></li><li>AI-BGM動画<b>無制限</b></li>
+        </ul>
+        <span class="vhi">🎬 AI動画 8,000pt/月<br>≒10秒動画 標準約26本／高画質約20本</span>
+      </div>
+    </div>
+    <div class="lead-quote" style="margin-top:24px">制作会社に動画を1本頼めば数万円。<strong>プレミアム（¥9,980)なら、その料金で何本もの広告級動画</strong>が作れます。記事も投稿も無制限。使うほど、外注との差は開いていきます。</div>
+    <p style="font-size:13.5px;color:var(--greyM)">※ 最新の料金・内容は公式サイトをご確認ください。<strong style="color:var(--ink)">0→1のAI動画生成はプレミアム以上でご利用いただけます。</strong>まずは無料プランからお試しを。</p>
+  </div>
+</section>
+
+<section class="grey">
+  <div class="container">
+    <div class="center-head">
+      <span class="eyebrow">USE CASES ── こんなお店に</span>
+      <h2 style="margin-top:16px">集客に悩む、<em>すべての現場</em>へ。</h2>
+    </div>
+    <div class="cases">
+      <div class="case"><div class="tag">飲食</div><h3>飲食店・カフェ</h3><p>新メニューや期間限定を、写真からPR動画に。予約フォームで来店につなげる。</p></div>
+      <div class="case"><div class="tag">美容・健康</div><h3>サロン・整体</h3><p>施術メニューやキャンペーンを発信。予約導線まで用意して、新規客を獲得。</p></div>
+      <div class="case"><div class="tag">教育</div><h3>教室・スクール</h3><p>体験レッスンの告知を自動作成。申込フォームで問い合わせのハードルを下げる。</p></div>
+      <div class="case"><div class="tag">小売・EC</div><h3>ショップ・通販</h3><p>セールや新商品を、SNS映えする形で発信。売上につながる導線を設計。</p></div>
+      <div class="case"><div class="tag">士業・サービス</div><h3>専門サービス</h3><p>サービス内容や強みを分かりやすく発信。相談・問い合わせフォームへ直結。</p></div>
+      <div class="case"><div class="tag">一人事業</div><h3>フリーランス</h3><p>本業に集中しながら、集客だけAIに任せる。マーケ担当がいなくても発信が回る。</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <span class="eyebrow">OUR STANCE ── 正直に、お伝えします</span>
+    <h2 style="margin-top:16px">魔法の集客装置では、<em>ありません</em>。</h2>
+    <p>クイマは、集客の"素材づくりと導線づくり"を劇的に速くする道具です。ただし、「投稿すれば必ず売れる」魔法ではありません。良い商品・良いサービスがあってこそ、集客は生きてきます。SNSへの配信は各プラットフォームの規約を尊重した範囲で行い、最終的な配信はあなたの確認と操作のもとで実行します。速さと安全の両立——それが、SWAN WORKSの姿勢です。</p>
+  </div>
+</section>
+
+<section class="grey">
+  <div class="container">
+    <div class="center-head">
+      <span class="eyebrow">FAQ ── よくあるご質問</span>
+      <h2 style="margin-top:16px">気になること、<em>お答えします</em>。</h2>
+    </div>
+    <details><summary>パソコンやSNSが苦手でも使えますか？</summary><p>はい。お店の情報を入力するだけで集客素材が完成する設計です。難しい操作や専門知識は不要で、SNSに詳しくない方でも使えます。</p></details>
+    <details><summary>本当に動画まで自動で作れるの？</summary><p>お店や商品の写真をご用意いただければ、AIがテロップ・動き・BGM・字幕を合成してPR動画に仕上げます。動画編集ソフトや撮影技術は必要ありません。</p></details>
+    <details><summary>どんな業種でも使えますか？</summary><p>はい。飲食・美容・教室・小売・EC・士業など、幅広い業種でお使いいただけます。申込フォームを「予約」「相談」「問い合わせ」などお店に合わせて差し替えられるので、業態を問わず集客に活用できます。</p></details>
+    <details><summary>SNSへの自動投稿はできますか？</summary><p>各プラットフォームの規約に沿った範囲で対応します。規約上リスクのある自動化は行わず、最終的な配信はご自身の確認・操作のもとで実行いただく方針です。</p></details>
+    <details><summary>料金はどのくらいですか？</summary><p>無料プラン（¥0)から始められ、ライト¥2,980／スタンダード¥4,980／プレミアム¥9,980／ビジネス¥29,800の5プランをご用意しています。記事や投稿は各プランの範囲で、0→1のAI動画生成はプレミアム以上でご利用いただけます。いつでも解約できます。</p></details>
+    <details><summary>AI動画の生成は、どのプランで使えますか？</summary><p>高品質なAI動画（リール・YouTube向け）の生成は、プレミアム（¥9,980/月・AI動画1,500pt）以上でご利用いただけます。より多く作りたい場合はビジネス（¥29,800/月・8,000pt）がおすすめです。ライト・スタンダードでも、AI-BGM付き動画は作成できます。</p></details>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="cta-final">
+      <h2>お店の集客、<em>もう一人で抱えない</em>。</h2>
+      <p>クイマは近日公開予定です。一番に使いたい方へ、いち早くご案内します。</p>
+      <a class="btn" href="mailto:swanworks.jp@gmail.com" style="margin-top:14px">先行案内を受け取る</a><br>
+      <a class="backlink" href="index.html#products">← 他の専用機を見る</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="fl"><img src="logo/swanworks_round_01.png" alt="SWAN WORKS"><span>SWAN WORKS</span></div>
+    <div>Quima（クイマ・開発中）　—　AIを、あなたの専用機に。</div>
+    <div class="copy">© 2026 SWAN WORKS（運営：諏訪光則）　お問い合わせ：swanworks.jp@gmail.com</div>
+  </div>
+</footer>
+
+<script src="preregister.js" defer></script>
+</body>
+</html>

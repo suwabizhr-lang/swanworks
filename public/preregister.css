@@ -1,0 +1,15 @@
+.preregister-section { padding: clamp(54px, 8vw, 96px) 20px; background: var(--cream, var(--bg, #edf6f7)); }
+.preregister { max-width: 720px; margin: 0 auto; padding: clamp(24px, 5vw, 42px); border-radius: 24px; background: #fff; color: var(--ink, var(--navy, #14213d)); box-shadow: 0 18px 60px rgba(20,33,61,.12); }
+.preregister__eyebrow { margin: 0 0 8px; color: var(--accent, var(--gold, #176b87)); font-size: .75rem; font-weight: 900; letter-spacing: .18em; }
+.preregister h2 { margin-top: 0; font-size: clamp(1.6rem, 4vw, 2.25rem); }
+.preregister__grid { display: grid; gap: 18px; }
+.preregister label { display: grid; gap: 7px; font-weight: 700; }
+.preregister input[type="text"], .preregister input[type="email"] { width: 100%; box-sizing: border-box; padding: 13px 14px; border: 1px solid #bac3d4; border-radius: 10px; font: inherit; }
+.preregister__choices { display: flex; flex-wrap: wrap; gap: 10px; }
+.preregister__choice { display: flex !important; align-items: center; gap: 6px !important; padding: 9px 12px; border: 1px solid #d7deea; border-radius: 999px; font-weight: 500 !important; }
+.preregister__consent { display: flex !important; align-items: flex-start; gap: 10px !important; font-weight: 500 !important; }
+.preregister button { padding: 14px 22px; border: 0; border-radius: 999px; background: var(--accent, var(--gold, #176b87)); color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+.preregister button:disabled { opacity: .55; cursor: wait; }
+.preregister__status { min-height: 1.5em; font-weight: 700; }
+.preregister__honeypot { position: absolute !important; left: -10000px !important; }
+@media (max-width: 560px) { .preregister__choices { display: grid; grid-template-columns: 1fr 1fr; } }
