@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>未来競馬 — AIが読み解く、競馬予想の専用機。｜SWAN WORKS</title>
+<meta name="description" content="未来競馬は、AIが膨大なデータを読み解き、レースの予想と買い目を提案する"競馬予想の専用機"。データ分析を、もっと楽しく、もっと深く。">
+<link rel="icon" href="logo/swanworks_round_01.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#071522;--navy2:#0C2036;--navy3:#12304C;--blue:#2F6EA6;--blueL:#5B9BD5;--emer:#1F9C6B;--gold:#C8A24A;--goldL:#E7CE86;--soft2:#93A6B7}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Montserrat,"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",system-ui,sans-serif;color:#dbe6f0;background:var(--navy);line-height:1.95;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:960px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:12px;letter-spacing:.28em;font-weight:800;color:var(--goldL)}
+  nav{position:sticky;top:0;z-index:100;background:rgba(7,21,34,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,162,74,.18)}
+  nav .inner{max-width:1140px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+  .logo-nav{display:flex;align-items:center;gap:12px}.logo-nav img{height:38px;border-radius:8px}.logo-nav span{color:#fff;font-weight:800;font-size:16px;letter-spacing:.06em}
+  nav .links{display:flex;gap:22px;align-items:center}nav .links a{color:#c3d2e0;font-size:14px;font-weight:600}nav .links a:hover{color:var(--goldL)}
+  .navcta{border-radius:9999px;font-weight:800;font-size:13px;padding:9px 18px;background:linear-gradient(135deg,var(--gold),var(--goldL));color:var(--navy)!important}
+  @media(max-width:720px){nav .links a.hidesp{display:none}}
+  .hero{text-align:center;padding:86px 0 70px;position:relative;overflow:hidden}
+  .hero .glow{position:absolute;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(31,156,107,.18),transparent 62%);top:-260px;left:50%;transform:translateX(-50%)}
+  .hero .in{position:relative;z-index:2}
+  .badge-cat{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--goldL);border:1px solid rgba(200,162,74,.4);border-radius:9999px;padding:6px 18px;margin-bottom:24px}
+  .hero h1{font-size:50px;font-weight:800;color:#fff;line-height:1.25}
+  .hero h1 .g{background:linear-gradient(135deg,var(--goldL),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .sub{font-size:18px;color:#aebfcf;margin:22px auto 0;max-width:640px}
+  .hero .st{margin-top:20px;font-size:12px;font-weight:800;background:rgba(255,255,255,.08);color:#9fb2c3;border-radius:9999px;padding:5px 14px;display:inline-block}
+  .cta-btns{margin-top:34px}
+  .btn{display:inline-block;border-radius:9999px;font-weight:800;font-size:15px;padding:14px 32px;background:linear-gradient(135deg,var(--gold),var(--goldL));color:var(--navy)}
+  @media(max-width:720px){.hero h1{font-size:30px}}
+  section{padding:64px 0}.alt{background:var(--navy2)}
+  h2{font-size:30px;font-weight:800;color:#fff;line-height:1.4;margin-bottom:20px}h2 em{font-style:normal;color:var(--goldL)}
+  p{font-size:16px;color:#b9c9d8;margin-bottom:16px}.big{font-size:19px;color:#d5e2ee;font-weight:600}
+  .lead-quote{border-left:4px solid var(--gold);padding:14px 22px;margin:22px 0;background:rgba(200,162,74,.06);border-radius:0 12px 12px 0;font-size:17px;color:#e6eef6}
+  .center-head{text-align:center;max-width:720px;margin:0 auto 40px}
+  .feats{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+  .feat{background:linear-gradient(160deg,#0D2338,#0A1A2C);border:1px solid rgba(91,155,213,.2);border-radius:16px;padding:26px}
+  .feat h3{margin:0 0 8px;color:#fff;font-size:18px}.feat p{font-size:14.5px;margin:0}
+  @media(max-width:720px){.feats{grid-template-columns:1fr}}
+  .warn{background:linear-gradient(160deg,#2A1E10,#1A140A);border:1px solid rgba(200,162,74,.3);border-radius:16px;padding:26px;margin-top:20px}
+  .warn h3{color:var(--goldL);font-size:17px;margin-bottom:8px}
+  .cta-final{background:linear-gradient(135deg,var(--navy3),var(--blue));text-align:center;border-radius:22px;padding:52px 30px;margin-top:20px}
+  .backlink{display:inline-block;margin-top:14px;color:var(--goldL);font-weight:700;font-size:14px}
+  footer{background:#050F19;color:#8ea1b3;padding:46px 0 40px;font-size:13px}
+  footer .fl{display:flex;align-items:center;gap:12px;margin-bottom:10px}footer .fl img{height:36px;border-radius:8px}footer .fl span{color:#fff;font-weight:800}
+  footer .copy{border-top:1px solid rgba(255,255,255,.08);margin-top:20px;padding-top:20px;color:#5f7385}
+</style>
+  <link rel="stylesheet" href="preregister.css">
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="index.html" class="logo-nav"><img src="logo/swanworks_round_01.png" alt="SWAN WORKS"><span>SWAN WORKS</span></a>
+    <div class="links">
+      <a href="index.html">ホーム</a>
+      <a href="index.html#products" class="hidesp">プロダクト</a>
+      <a href="mission.html" class="hidesp">ミッション</a>
+      <a href="mailto:swanworks.jp@gmail.com" class="navcta">お問い合わせ</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="glow"></div>
+  <div class="in container">
+    <div class="badge-cat">SWAN WORKS 専用機シリーズ ／ 競馬予想</div>
+    <h1>AIが読み解く、<br><span class="g">競馬予想</span>の専用機。</h1>
+    <p class="sub">未来競馬は、膨大なレースデータをAIが分析し、予想と買い目の考え方を提案する"競馬を深く楽しむ"ための専用機。データ分析の面白さを、誰でも手のひらに。</p>
+    <div class="st">開発中 ／ 近日公開予定</div>
+    <div class="cta-btns">
+      <a href="mailto:swanworks.jp@gmail.com" class="btn">先行案内を受け取る</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <span class="eyebrow">CONCEPT ── 未来競馬とは</span>
+    <h2>予想の"めんどくさい"を消し、<br><em>"考える楽しさ"</em>を残す。</h2>
+    <p class="big">競馬の醍醐味は、データを読み解き、自分なりの予想を立てる知的な楽しさにあります。でも、過去の成績、血統、馬場状態、オッズ…その膨大なデータを一人で追うのは大変です。</p>
+    <p>未来競馬は、その"データ集めと分析"の重労働をAIに任せる専用機です。AIが多角的にレースを読み解き、予想や買い目の考え方を分かりやすく提示。あなたはそれを土台に、最後の判断を楽しむ——そんな新しい競馬の味わい方を提案します。</p>
+    <div class="lead-quote">AIは、あなたの予想を"代わりに決める"のではなく、"より深く考えるための材料"を差し出します。主役は、いつだってあなたです。</div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    <div class="center-head">
+      <span class="eyebrow">FEATURES ── 未来競馬の特長</span>
+      <h2>データを、<em>あなたの味方</em>に。</h2>
+    </div>
+    <div class="feats">
+      <div class="feat"><h3>AIによる多角的な予想</h3><p>過去データを学習したAIが、レースごとに予想を提示。人の目では追いきれない情報も、まとめて分析します。</p></div>
+      <div class="feat"><h3>買い目の考え方を提案</h3><p>「なぜこの馬なのか」の根拠とあわせて、買い目の組み立て方を提示。納得しながら楽しめます。</p></div>
+      <div class="feat"><h3>成績をふりかえる</h3><p>予想の的中率や振り返りを記録。データとともに、自分の予想の傾向を客観的に見つめられます。</p></div>
+      <div class="feat"><h3>むずかしくない画面</h3><p>専門的なデータも、AIが苦手な人でも分かるように整理して表示。数字の羅列に迷いません。</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <span class="eyebrow">OUR STANCE ── 大切なお願い</span>
+    <h2>楽しむための道具として。</h2>
+    <div class="warn">
+      <h3>⚠ ご利用にあたって</h3>
+      <p>未来競馬は、競馬というエンターテインメントをより深く楽しむための"データ分析・予想支援"の道具です。AIの予想は的中を保証するものではなく、馬券の購入は必ずご自身の判断と責任で、無理のない範囲でお楽しみください。のめり込みすぎず、余暇の楽しみとして付き合っていただくことを願っています。</p>
+    </div>
+    <p style="margin-top:20px">SWAN WORKSは「たのしみを、増やす」ことを大切にしています。未来競馬も、あくまで健全な娯楽の範囲で、競馬の知的な面白さを広げる存在でありたいと考えています。</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="cta-final">
+      <h2 style="margin-bottom:12px">競馬を、もっと深く楽しもう。</h2>
+      <p style="color:#fff;opacity:.95">未来競馬は近日公開予定です。<br>先行案内をご希望の方は、お問い合わせください。</p>
+      <a class="btn" href="mailto:swanworks.jp@gmail.com" style="margin-top:14px">先行案内を受け取る</a><br>
+      <a class="backlink" href="index.html#products">← 他の専用機を見る</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="fl"><img src="logo/swanworks_round_01.png" alt="SWAN WORKS"><span>SWAN WORKS</span></div>
+    <div>AIを、あなたの専用機に。　｜　未来競馬（開発中）</div>
+    <div class="copy">© 2026 SWAN WORKS（運営：諏訪光則）　お問い合わせ：swanworks.jp@gmail.com</div>
+  </div>
+</footer>
+
+<script src="preregister.js" defer></script>
+</body>
+</html>
