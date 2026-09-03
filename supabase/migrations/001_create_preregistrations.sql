@@ -15,5 +15,9 @@ alter table public.preregistrations enable row level security;
 -- Browser clients receive no direct table policy. Only the server-side service role can access records.
 revoke all on table public.preregistrations from anon, authenticated;
 
+-- The Render backend can access this table; browser roles remain blocked.
+grant usage on schema public to service_role;
+grant select, insert, update on table public.preregistrations to service_role;
+
 create index if not exists preregistrations_submitted_at_idx
   on public.preregistrations (submitted_at desc);
