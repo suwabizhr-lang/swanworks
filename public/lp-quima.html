@@ -10,46 +10,47 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#161616;--ink2:#242424;--ink3:#2E2E2E;--yellow:#FFE600;--yellowD:#B89B00;--grey:#F4F4F4;--greyM:#4F4F4F;--line:#333;--lineL:#E4E4E4;--paper:#fff}
+  :root{--blue:#1565C0;--blueD:#0D3E82;--blueL:#42A5F5;--navy:#0B2140;--orange:#FF7A18;--orangeL:#FFA94D;--ink:#12243A;--ink2:#123057;--grey:#EEF4FB;--greyM:#4A5C70;--line:#1E3E63;--lineL:#D6E3F0;--paper:#fff;
+    --yellow:var(--orange);--yellowD:#E06A00;--ink3:#0B2140}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:Montserrat,"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.9;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
   .container{max-width:960px;margin:0 auto;padding:0 24px}
-  .eyebrow{font-size:12px;letter-spacing:.2em;font-weight:800;color:var(--ink);background:var(--yellow);display:inline-block;padding:3px 12px;border-radius:6px}
-  .dark .eyebrow{color:var(--yellow);background:rgba(255,230,0,.12)}
-  nav{position:sticky;top:0;z-index:100;background:rgba(22,22,22,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:12px;letter-spacing:.2em;font-weight:800;color:#fff;background:var(--orange);display:inline-block;padding:3px 12px;border-radius:6px}
+  .dark .eyebrow,.vfeature .eyebrow{color:var(--orangeL);background:rgba(255,122,24,.16)}
+  nav{position:sticky;top:0;z-index:100;background:rgba(11,33,64,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
   nav .inner{max-width:1140px;margin:0 auto;padding:11px 24px;display:flex;align-items:center;justify-content:space-between}
   .logo-nav{display:flex;align-items:center;gap:10px}.logo-nav img{height:34px}.logo-nav .txt{color:#fff;font-weight:900;font-size:19px;letter-spacing:-.5px}
   .logo-nav small{color:var(--greyM);font-size:11px;font-weight:700;margin-left:2px}
-  nav .links{display:flex;gap:20px;align-items:center}nav .links a{color:#ccc;font-size:14px;font-weight:700}nav .links a:hover{color:var(--yellow)}
-  .navcta{border-radius:9999px;font-weight:800;font-size:13px;padding:10px 20px;background:var(--yellow);color:var(--ink)!important}
+  nav .links{display:flex;gap:20px;align-items:center}nav .links a{color:#cfe0f2;font-size:14px;font-weight:700}nav .links a:hover{color:var(--orangeL)}
+  .navcta{border-radius:9999px;font-weight:800;font-size:13px;padding:10px 20px;background:var(--orange);color:#fff!important}
   @media(max-width:720px){nav .links a.hidesp{display:none}}
   /* hero */
-  .hero{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:74px 0 82px;text-align:center}
-  .hero::before{content:"";position:absolute;top:-140px;right:-100px;width:420px;height:420px;background:radial-gradient(circle,rgba(255,230,0,.16),transparent 62%)}
-  .hero::after{content:"";position:absolute;bottom:-120px;left:-80px;width:360px;height:360px;background:radial-gradient(circle,rgba(255,230,0,.08),transparent 62%)}
+  .hero{background:linear-gradient(160deg,#1E88E5 0%,#1565C0 55%,#0D3E82 100%);color:#fff;position:relative;overflow:hidden;padding:74px 0 82px;text-align:center}
+  .hero::before{content:"";position:absolute;top:-140px;right:-100px;width:460px;height:460px;background:radial-gradient(circle,rgba(255,169,77,.4),transparent 62%);opacity:.55}
+  .hero::after{content:"";position:absolute;bottom:-120px;left:-80px;width:380px;height:380px;background:conic-gradient(from 200deg,transparent,rgba(255,138,0,.22),transparent 40%);border-radius:50%;filter:blur(6px)}
   .hero .in{position:relative;z-index:2}
   .hero .logoicon{width:88px;height:88px;border-radius:22px;box-shadow:0 12px 34px rgba(0,0,0,.5);margin-bottom:22px}
-  .hero h1{font-size:50px;font-weight:900;line-height:1.2;letter-spacing:-.5px}
-  .hero h1 .y{color:var(--yellow)}
-  .hero .sub{font-size:18px;margin:22px auto 0;max-width:640px;color:#bdbdbd}
-  .hero .st{margin-top:18px;display:inline-block;font-size:12px;font-weight:800;background:rgba(255,255,255,.1);border-radius:9999px;padding:5px 16px;color:#ddd}
+  .hero h1{font-size:50px;font-weight:900;line-height:1.2;letter-spacing:-.5px;text-shadow:0 2px 10px rgba(0,0,0,.2)}
+  .hero h1 .y{color:#FFD24D}
+  .hero .sub{font-size:18px;margin:22px auto 0;max-width:640px;color:#E8F2FC}
+  .hero .st{margin-top:18px;display:inline-block;font-size:12px;font-weight:800;background:rgba(255,255,255,.16);border-radius:9999px;padding:5px 16px;color:#eaf3fc}
   .cta-btns{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-block;border-radius:9999px;font-weight:800;font-size:15px;padding:15px 34px;background:var(--yellow);color:var(--ink);transition:transform .15s}
-  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,230,0,.35)}
-  .btn.ghost{background:transparent;color:#fff;border:1.5px solid #555}
-  .btn.ghost:hover{border-color:var(--yellow);box-shadow:none}
+  .btn{display:inline-block;border-radius:9999px;font-weight:800;font-size:15px;padding:15px 34px;background:linear-gradient(135deg,var(--orange),var(--orangeL));color:#fff;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,122,24,.4)}
+  .btn.ghost{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+  .btn.ghost:hover{border-color:#fff;box-shadow:none}
   @media(max-width:720px){.hero h1{font-size:31px}}
   section{padding:64px 0}
   .grey{background:var(--grey)}
-  .dark{background:var(--ink);color:#fff}
-  h2{font-size:32px;font-weight:900;color:var(--ink);line-height:1.35;margin-bottom:18px;letter-spacing:-.5px}h2 em{font-style:normal;background:var(--yellow);padding:0 6px;border-radius:4px}
-  .dark h2{color:#fff}.dark h2 em{color:var(--ink)}
+  .dark{background:linear-gradient(160deg,#123057,#0B2140);color:#fff}
+  h2{font-size:32px;font-weight:900;color:var(--ink);line-height:1.35;margin-bottom:18px;letter-spacing:-.5px}h2 em{font-style:normal;color:var(--orange);background:none;padding:0}
+  .dark h2{color:#fff}.dark h2 em{color:var(--orangeL)}
   h3{font-size:20px;font-weight:800;margin:20px 0 10px}
-  p{font-size:16px;color:#3a3a3a;margin-bottom:16px}.dark p{color:#c4c4c4}.big{font-size:19px;font-weight:800;color:var(--ink)}.dark .big{color:#fff}
-  .lead-quote{border-left:5px solid var(--yellow);padding:14px 22px;margin:22px 0;background:#FFFDE6;border-radius:0 10px 10px 0;font-size:17px;color:var(--ink);font-weight:600}
-  .dark .lead-quote{background:rgba(255,230,0,.08);color:#fff}
+  p{font-size:16px;color:#33465b;margin-bottom:16px}.dark p{color:#c8d8ea}.big{font-size:19px;font-weight:800;color:var(--ink)}.dark .big{color:#fff}
+  .lead-quote{border-left:5px solid var(--orange);padding:14px 22px;margin:22px 0;background:#FFF4EA;border-radius:0 10px 10px 0;font-size:17px;color:#7A3D10;font-weight:600}
+  .dark .lead-quote{background:rgba(255,122,24,.1);color:#fff;border-color:var(--orangeL)}
   .center-head{text-align:center;max-width:740px;margin:0 auto 40px}
   .pains{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
   .pain{background:#fff;border:1px solid var(--lineL);border-radius:14px;padding:26px 22px}
@@ -95,10 +96,10 @@
   .plan .vhi{background:#FFF7C2;margin:6px -8px 0;padding:8px;border-radius:8px;font-size:11.5px;color:#5a5320;font-weight:700;text-align:center;display:block}
   @media(max-width:900px){.plans{grid-template-columns:1fr 1fr}}
   @media(max-width:560px){.plans{grid-template-columns:1fr}}
-  .cta-final{background:var(--yellow);text-align:center;border-radius:22px;padding:56px 30px;color:var(--ink);margin-top:10px}
-  .cta-final h2{color:var(--ink);margin-bottom:12px}.cta-final h2 em{background:var(--ink);color:var(--yellow)}
-  .cta-final p{color:#4a4a2a}.cta-final .btn{background:var(--ink);color:var(--yellow)}
-  .backlink{display:inline-block;margin-top:14px;color:var(--ink);font-weight:800;font-size:14px}
+  .cta-final{background:linear-gradient(135deg,#1E88E5,#0D3E82);text-align:center;border-radius:22px;padding:56px 30px;color:#fff;margin-top:10px}
+  .cta-final h2{color:#fff;margin-bottom:12px}.cta-final h2 em{color:#FFD24D;background:none}
+  .cta-final p{color:#e8f2fc}.cta-final .btn{background:linear-gradient(135deg,var(--orange),var(--orangeL));color:#fff}
+  .backlink{display:inline-block;margin-top:14px;color:#fff;font-weight:800;font-size:14px;opacity:.95}
   /* video hero section */
   .vfeature{background:var(--ink);color:#fff;position:relative;overflow:hidden}
   .vfeature::before{content:"";position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,230,0,.12),transparent 62%)}
@@ -175,17 +176,17 @@
     <div class="lead-quote">「クイック（すばやく)」に「マーケティング」を。忙しい現場のための、いちばん速い集客の相棒。それが、クイマです。</div>
     <div class="weapons">
       <div class="wp">
-        <svg class="ic" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="36" height="36" rx="6" fill="none" stroke="#161616" stroke-width="3"/><path d="M18 22 h20 M18 30 h20 M18 38 h12" stroke="#E6CF00" stroke-width="3" stroke-linecap="round"/></svg>
+        <svg class="ic" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="36" height="36" rx="6" fill="none" stroke="#1565C0" stroke-width="3"/><path d="M18 22 h20 M18 30 h20 M18 38 h12" stroke="#FF7A18" stroke-width="3" stroke-linecap="round"/></svg>
         <h3>① SNS集客記事</h3>
         <p>Instagram・X・LINEなど、チャネルごとに最適な文字数・トーンで投稿文を自動作成。</p>
       </div>
       <div class="wp">
-        <svg class="ic" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="14" width="40" height="30" rx="5" fill="none" stroke="#161616" stroke-width="3"/><path d="M24 24 l12 7 l-12 7 Z" fill="#E6CF00"/></svg>
+        <svg class="ic" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="14" width="40" height="30" rx="5" fill="none" stroke="#1565C0" stroke-width="3"/><path d="M24 24 l12 7 l-12 7 Z" fill="#FF7A18"/></svg>
         <h3>② PR動画</h3>
         <p>写真にテロップ・動き・BGM・字幕をAIが合成。編集スキルなしで、PR動画が完成。</p>
       </div>
       <div class="wp">
-        <svg class="ic" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="8" width="28" height="40" rx="5" fill="none" stroke="#161616" stroke-width="3"/><path d="M22 22 h12 M22 30 h12" stroke="#161616" stroke-width="3" stroke-linecap="round"/><circle cx="28" cy="40" r="2.5" fill="#E6CF00"/></svg>
+        <svg class="ic" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="8" width="28" height="40" rx="5" fill="none" stroke="#1565C0" stroke-width="3"/><path d="M22 22 h12 M22 30 h12" stroke="#1565C0" stroke-width="3" stroke-linecap="round"/><circle cx="28" cy="40" r="2.5" fill="#FF7A18"/></svg>
         <h3>③ 申込・予約フォーム</h3>
         <p>予約・問い合わせ・申込を受け取る専用フォームとQRを発行。見た人を、そのままお客様へ。</p>
       </div>
@@ -204,17 +205,17 @@
 
     <div class="vgrid">
       <div class="vcard">
-        <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="12" width="40" height="28" rx="5" fill="none" stroke="#FFE600" stroke-width="3"/><path d="M22 22 l10 6 l-10 6 Z" fill="#FFE600"/></svg>
+        <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="12" width="40" height="28" rx="5" fill="none" stroke="#FFA94D" stroke-width="3"/><path d="M22 22 l10 6 l-10 6 Z" fill="#FFA94D"/></svg>
         <h3>0→1で、動画を生成</h3>
         <p>「素材がないから作れない」はもう終わり。テーマと情報を入れるだけで、AIが構成から映像まで一気に作り上げます。</p>
       </div>
       <div class="vcard">
-        <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><path d="M26 6 l5 12 l13 1 l-10 9 l3 13 l-11 -7 l-11 7 l3 -13 l-10 -9 l13 -1 Z" fill="none" stroke="#FFE600" stroke-width="2.5" stroke-linejoin="round"/></svg>
+        <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><path d="M26 6 l5 12 l13 1 l-10 9 l3 13 l-11 -7 l-11 7 l3 -13 l-10 -9 l13 -1 Z" fill="none" stroke="#FFA94D" stroke-width="2.5" stroke-linejoin="round"/></svg>
         <h3>広告に出せるクオリティ</h3>
         <p>ただの自動生成ではありません。リール・YouTube広告として実際に出稿できる完成度。制作会社の納品物に迫る仕上がりです。</p>
       </div>
       <div class="vcard">
-        <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><path d="M10 30 l8 8 l24 -26" stroke="#FFE600" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><path d="M10 30 l8 8 l24 -26" stroke="#FFA94D" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h3>投稿も広告も、一気通貫</h3>
         <p>SNS投稿用のショートも、広告用の動画も、同じ流れで。作った動画を"広告にまで昇華"できる導線を、一つのツールで。</p>
       </div>
@@ -233,7 +234,7 @@
     <div class="promobox">
       <div class="lbl">PREMIUM / BUSINESS 限定</div>
       <h3>この"AI動画生成"は、プレミアム以上で。</h3>
-      <p>高品質なAI動画を生み出す「AI動画クレジット」は、<strong style="color:#FFE600">プレミアム（¥9,980/月)以上</strong>でご利用いただけます。制作会社に動画を1本頼めば数万円〜。プレミアムなら、月額1本分ほどの料金で<strong style="color:#fff">何本もの広告級動画</strong>が作れる計算です。マーケの常識が、変わります。</p>
+      <p>高品質なAI動画を生み出す「AI動画クレジット」は、<strong style="color:#FFA94D">プレミアム（¥9,980/月)以上</strong>でご利用いただけます。制作会社に動画を1本頼めば数万円〜。プレミアムなら、月額1本分ほどの料金で<strong style="color:#fff">何本もの広告級動画</strong>が作れる計算です。マーケの常識が、変わります。</p>
       <a class="btn" href="#pricing">プレミアムの内容を見る</a>
     </div>
   </div>
