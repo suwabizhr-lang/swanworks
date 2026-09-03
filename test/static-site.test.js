@@ -5,9 +5,15 @@ const path = require('node:path');
 
 const publicDir = path.join(__dirname, '..', 'public');
 const pages = [
-  'index.html', 'mission.html', 'philosophy.html', 'lp-pasha.html',
+  'index.html', 'mission.html', 'philosophy.html',
   'lp-quima.html', 'lp-soramoto.html', 'lp-mirai-keiba.html'
 ];
+
+test('Pasha uses its external landing page instead of a local page', () => {
+  assert.equal(fs.existsSync(path.join(publicDir, 'lp-pasha.html')), false);
+  const home = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
+  assert.match(home, /href="https:\/\/video-analyzer-5d8w\.onrender\.com"/);
+});
 
 test('every supplied page loads the shared preregistration form', () => {
   for (const page of pages) {
