@@ -19,6 +19,6 @@ services:
       - key: RESEND_API_KEY
         sync: false
       - key: MAIL_FROM
-        value: SWAN WORKS <noreply@swanworks.jp>
+        sync: false
       - key: MAIL_TO
         value: swanworks.jp@gmail.com
