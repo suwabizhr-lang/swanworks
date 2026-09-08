@@ -1,0 +1,9 @@
+<svg width="640" height="200" viewBox="0 0 640 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="200" fill="#FFFFFF"/>
+  <g transform="translate(40, 40)">
+    <circle cx="60" cy="57" r="46" stroke="#161616" stroke-width="9"/>
+    <path d="M89 86 L112 109" stroke="#161616" stroke-width="11" stroke-linecap="round"/>
+    <path d="M67 22 L39 66 L57 66 L50 93 L82 50 L63 50 Z" fill="#FFE600"/>
+  </g>
+  <text x="200" y="128" font-family="'Chip Display', system-ui, 'Segoe UI', sans-serif" font-weight="800" font-size="82" fill="#161616" letter-spacing="-3">Quima</text>
+</svg>
