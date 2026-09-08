@@ -22,3 +22,10 @@ Node.js + Expressで `public/` の静的サイトを配信し、`POST /api/prere
 - `MAIL_TO`
 - `NODE_ENV`
 - `NODE_VERSION`
+
+## GA4設定
+
+Renderの対象サービスを開き、**Environment** に `GA4_MEASUREMENT_ID` を追加して、
+GA4ウェブデータストリームの測定ID（例: `G-XXXXXXXXXX`）を設定します。設定後は
+トップページと3つの専用機LPでGA4が有効になります。未設定または形式が不正な場合は
+Googleタグを出力せず、計測オフのままサイトを通常表示します。
