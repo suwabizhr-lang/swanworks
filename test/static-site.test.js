@@ -53,6 +53,24 @@ test('three senyouki variants keep their production paths and required CTA links
   }
 });
 
+test('three senyouki variants load CTA tracking with the correct variant', () => {
+  const variants = ['v1', 'v2', 'v3'];
+  for (const [index, page] of senyoukiPages.entries()) {
+    const html = fs.readFileSync(path.join(publicDir, page), 'utf8');
+    assert.match(html, new RegExp(`<body[^>]*data-ga4-variant="${variants[index]}"`));
+    assert.match(html, /<script src="ga4-events\.js" defer><\/script>/);
+  }
+
+  const tracker = fs.readFileSync(path.join(publicDir, 'ga4-events.js'), 'utf8');
+  assert.match(tracker, /'select_product'/);
+  assert.match(tracker, /variant,/);
+  assert.match(tracker, /product,/);
+  assert.match(tracker, /destination_url: destination\.href/);
+  assert.match(tracker, /'pasyatto-for-sale\.com': 'pasyatto'/);
+  assert.match(tracker, /'quickmarketing-pro\.com': 'quima'/);
+  assert.match(tracker, /'soramoto\.jp': 'soramoto'/);
+});
+
 test('senyouki publication does not replace preregistration integration', () => {
   assert.ok(fs.existsSync(path.join(publicDir, 'preregister.js')));
   assert.ok(fs.existsSync(path.join(publicDir, 'preregister.css')));

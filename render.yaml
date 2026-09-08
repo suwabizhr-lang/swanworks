@@ -12,6 +12,8 @@ services:
         value: 22
       - key: NODE_ENV
         value: production
+      - key: GA4_MEASUREMENT_ID
+        sync: false
       - key: SUPABASE_URL
         sync: false
       - key: SUPABASE_SERVICE_ROLE_KEY
