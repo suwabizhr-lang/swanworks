@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>もう、飽きた。｜AIを、あなたの専用機に。 — SWAN WORKS</title>
+<meta name="description" content="高額スクールや講座で遠回りする前に。SWAN WORKSは「何に使うか」が最初から決まっているAI搭載の専用機。サブスクだからリスクほぼゼロ。時間と価値を、いま高める。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@600;700;800;900&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#071522; --navy2:#0C2033; --ink:#12202E;
+    --gold:#C8A24A; --goldL:#EAC97A; --gold2:#8C6E2E;
+    --paper:#FFFFFF; --mist:#F3F6FA; --soft:#5E6F80; --line:#E4EBF2;
+    --red:#C0392B; --ok:#1E8E5A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.9;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  .serif{font-family:'Cinzel',serif}
+  .mono{font-family:'Montserrat',sans-serif}
+  h2{font-size:27px;font-weight:900;line-height:1.5;letter-spacing:.01em}
+  @media(max-width:600px){h2{font-size:22px}}
+  strong{color:var(--gold2);font-weight:900}
+  .big{font-size:34px;font-weight:900;line-height:1.45}
+  @media(max-width:600px){.big{font-size:25px}}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:60;background:rgba(7,21,34,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+  nav .in{max-width:760px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between}
+  nav img{height:30px}
+  nav a.cta{background:linear-gradient(135deg,var(--gold),var(--goldL));color:var(--navy);font-weight:900;font-size:13px;padding:9px 16px;border-radius:9999px;text-decoration:none}
+
+  /* hero */
+  .hero{background:radial-gradient(1200px 600px at 50% -10%,#12314e 0%,var(--navy) 55%);color:#fff;text-align:center;padding:64px 0 78px;position:relative}
+  .hero .logo{height:92px;margin-bottom:26px;filter:drop-shadow(0 6px 20px rgba(0,0,0,.4))}
+  .hero .kills{font-size:15px;color:#9fb6cc;letter-spacing:.02em;margin-bottom:10px;font-weight:700}
+  .hero h1{font-size:44px;font-weight:900;line-height:1.3;letter-spacing:.01em}
+  .hero h1 .g{background:linear-gradient(135deg,var(--goldL),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.sub{font-size:17px;color:#c6d5e4;margin-top:22px;line-height:1.9}
+  @media(max-width:600px){.hero h1{font-size:30px}.hero{padding:48px 0 58px}}
+  .scroll{margin-top:34px;color:#8fa6bc;font-size:12px;letter-spacing:.3em}
+
+  /* section base */
+  section{padding:64px 0}
+  .eyebrow{font-size:12px;letter-spacing:.28em;font-weight:800;color:var(--gold2);margin-bottom:14px}
+  .lead{font-size:18px;color:#33475a;margin-top:6px}
+  .em{background:linear-gradient(transparent 62%,rgba(200,162,74,.28) 62%);font-weight:900}
+
+  /* chat bubbles (the scam funnel) */
+  .funnel{background:var(--mist)}
+  .talk{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+  .bubble{max-width:82%;padding:13px 17px;border-radius:16px;font-size:15.5px;line-height:1.8;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+  .them{align-self:flex-start;background:#fff;border:1px solid var(--line);border-top-left-radius:4px}
+  .me{align-self:flex-end;background:#DCF3E4;border-top-right-radius:4px}
+  .beat{text-align:center;color:var(--soft);font-size:14px;margin:6px 0;font-weight:700}
+  .price{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:18px 0}
+  .price span{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-weight:900;color:var(--red)}
+
+  /* truth block (dark) */
+  .truth{background:var(--navy);color:#eaf1f8;text-align:center}
+  .truth .eyebrow{color:var(--goldL)}
+  .truth h2{color:#fff}
+  .truth .card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:26px 22px;margin-top:18px;text-align:left}
+  .truth .card p{color:#c6d5e4;font-size:16px}
+  .truth .punch{font-size:28px;font-weight:900;color:#fff;margin:26px 0 6px;line-height:1.5}
+  .truth .punch .g{color:var(--goldL)}
+  @media(max-width:600px){.truth .punch{font-size:22px}}
+
+  /* CTA button */
+  .ctaband{text-align:center;padding:44px 0}
+  .btn{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--goldL));color:var(--navy);font-weight:900;font-size:18px;padding:18px 40px;border-radius:9999px;text-decoration:none;box-shadow:0 12px 30px rgba(200,162,74,.4);transition:transform .15s,box-shadow .15s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(200,162,74,.5)}
+  .btn.small{font-size:15px;padding:14px 30px}
+  .ctaband .note{font-size:13px;color:var(--soft);margin-top:12px}
+
+  /* why senyouki */
+  .knife{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+  .knife .box{background:var(--mist);border-radius:14px;padding:20px;border-top:3px solid var(--line)}
+  .knife .box.bad{border-top-color:var(--red)}
+  .knife .box.good{border-top-color:var(--ok)}
+  .knife .box h4{font-size:15px;font-weight:900;margin-bottom:10px}
+  .knife .box.bad h4{color:var(--red)}
+  .knife .box.good h4{color:var(--ok)}
+  .knife .box p{font-size:14px;color:#4a5a6a}
+  @media(max-width:600px){.knife{grid-template-columns:1fr}}
+
+  /* products */
+  .products{background:var(--mist)}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;margin-top:18px;display:flex;gap:18px;align-items:flex-start;box-shadow:0 4px 16px rgba(10,24,38,.05)}
+  .pcard img.ic{width:64px;height:64px;border-radius:14px;flex-shrink:0;object-fit:cover;box-shadow:0 4px 12px rgba(0,0,0,.12)}
+  .pcard img.ic-soramoto{width:160px;height:auto;flex-shrink:0;border-radius:12px;object-fit:contain;background:#F6ECD8;padding:12px 14px;box-shadow:0 4px 12px rgba(0,0,0,.12)}
+  @media(max-width:600px){.pcard img.ic-soramoto{width:190px}}
+  .pcard .cat{font-size:11px;font-weight:800;color:#fff;background:var(--navy);border-radius:9999px;padding:3px 11px;display:inline-block}
+  .pcard h3{font-size:21px;font-weight:900;margin:8px 0 4px}
+  .pcard .tl{font-size:13px;font-weight:900;color:var(--gold2);margin-bottom:8px}
+  .pcard p{font-size:14.5px;color:#4a5a6a}
+  .pcard a.more{display:inline-block;margin-top:12px;font-weight:900;color:var(--navy);font-size:14px;text-decoration:none;border-bottom:2px solid var(--gold)}
+  @media(max-width:600px){.pcard{flex-direction:column;gap:12px}.pcard img.ic{width:56px;height:56px}}
+
+  /* risk */
+  .riskgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+  .riskgrid .r{border-radius:14px;padding:20px}
+  .riskgrid .r1{background:#FBEEEC;border:1px solid #F0C8C2}
+  .riskgrid .r2{background:#E9F6EF;border:1px solid #BFE4CF}
+  .riskgrid .r h4{font-size:15px;font-weight:900;margin-bottom:8px}
+  .riskgrid .r1 h4{color:var(--red)}.riskgrid .r2 h4{color:var(--ok)}
+  .riskgrid .r p{font-size:14px;color:#4a5a6a}
+  @media(max-width:600px){.riskgrid{grid-template-columns:1fr}}
+
+  /* steps */
+  .step{display:flex;gap:16px;align-items:flex-start;margin-top:20px}
+  .step .n{width:38px;height:38px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--goldL));color:var(--navy);font-weight:900;display:flex;align-items:center;justify-content:center;font-size:17px}
+  .step h4{font-size:17px;font-weight:900}
+  .step p{font-size:14.5px;color:#4a5a6a}
+
+  /* faq */
+  details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:0;margin-top:12px;overflow:hidden}
+  summary{cursor:pointer;padding:16px 18px;font-weight:800;font-size:15.5px;list-style:none;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"＋";position:absolute;right:18px;color:var(--gold2);font-weight:900}
+  details[open] summary::after{content:"－"}
+  details .a{padding:0 18px 16px;font-size:14.5px;color:#4a5a6a}
+
+  /* final */
+  .final{background:radial-gradient(1000px 500px at 50% 120%,#12314e,var(--navy) 60%);color:#fff;text-align:center;padding:70px 0}
+  .final img{height:54px;margin-bottom:22px}
+  .final h2{color:#fff;font-size:30px}
+  .final p{color:#c6d5e4;font-size:16px;margin:16px auto 30px;max-width:560px}
+  @media(max-width:600px){.final h2{font-size:23px}}
+
+  footer{background:#050E17;color:#7f93a6;font-size:12.5px;text-align:center;padding:30px 20px}
+  footer a{color:#9fb6cc;text-decoration:none}
+
+  .divider{height:1px;background:var(--line);max-width:120px;margin:26px auto}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="in">
+    <img src="lp-assets/swanworks_text_01.png" alt="SWAN WORKS">
+    <a href="#try" class="cta">無料で試す</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <img class="logo" src="lp-assets/swanworks_wide_02.png" alt="SWAN WORKS">
+    <div class="kills">— もう、飽きた。—</div>
+    <h1>「AIで月◯万稼ぐ方法」に、<br><span class="g">もう振り回されない。</span></h1>
+    <p class="sub">LINEグループに誘われ、ウェビナー、面談、そして高額スクール。<br>「20万、30万は安い」「返金保証付き」「このスキルで年商1億」…<br><br>——で、<strong style="color:#fff">どうなりました？</strong></p>
+    <div class="scroll">▽ よく考えて</div>
+  </div>
+</header>
+
+<!-- 導入 -->
+<section>
+  <div class="wrap">
+    <p style="font-size:18px;color:#33475a;font-weight:700;line-height:2">もう、飽きた。<br><br>
+    「AIで月これくらい稼ぐ方法があるんです」——そんなメッセージで、LINEグループに誘われて。<br>ウェビナーに参加させられて、そこから個別面談へ。そして最後は、決まってスクールや講座への誘導。<br><br>
+    「20万、30万は、投資だと思えば安い」。<br>「返金保証も付いています」。<br>「このスキルで、年商1億円の人もいます」。<br><br>
+    耳ざわりのいい言葉を、たくさん浴びて。カード番号を入力して。——それで、<strong>どうなりましたか。</strong></p>
+  </div>
+</section>
+
+<!-- FUNNEL (共感：詐欺的ファネルの再現) -->
+<section class="funnel">
+  <div class="wrap">
+    <div class="eyebrow">YOU'VE BEEN HERE?</div>
+    <h2>この流れ、<span class="em">見覚えありませんか。</span></h2>
+    <div class="talk">
+      <div class="bubble them">AIで月30万、副業で稼げる方法があるんです🔥 まずは無料ウェビナーへ！</div>
+      <div class="bubble me">へぇ…ちょっと気になるかも</div>
+      <div class="bubble them">では個別面談を。あなたの本気度、見せてください</div>
+      <div class="bubble them">このスクールなら大丈夫。20万、30万は投資です。返金保証もあります</div>
+      <div class="bubble me">…カード番号を、入力…</div>
+    </div>
+    <div class="price"><span>¥200,000</span><span>¥300,000</span><span>「年商1億」</span></div>
+    <p class="beat">そして数ヶ月後——</p>
+    <p class="big" style="text-align:center">・・・・ん？</p>
+    <p class="lead" style="text-align:center;margin-top:20px">結果は、伴いましたか。<br>正直に、胸に手を当てて。</p>
+
+    <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;margin-top:26px">
+      <p style="font-size:16px;color:#33475a">受け取ったのは、分厚い動画教材と、大量のプロンプト集。<br>最初の数日は、やる気に満ちていた。でも——<br><br>
+      仕事や家事に追われ、教材は少しずつ「あとで見る」に。<br>プロンプトをコピーして貼ってみても、<strong>自分の状況にどう当てはめるか分からない。</strong><br>コミュニティで質問しても、返ってくるのは「まずは行動あるのみ！」の精神論。<br><br>
+      気づけば、月額のコミュニティ費だけが、静かに引き落とされていく。<br>——これ、あなたのことでは、ありませんか。</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUTH (AIは箱) -->
+<section class="truth">
+  <div class="wrap">
+    <div class="eyebrow">THE TRUTH</div>
+    <h2>よく考えて。<br>AIは、最高の頭脳。<br>でも——</h2>
+    <div class="card">
+      <p>AIに、<strong style="color:#fff">閃きも、嘆きも、感情も</strong>ありません。<br>親切な心も、あなたを想う希望も、ありません。<br><br>だから、講座やスクールでAIを「知った」「学んだ」ところで、それは——<br><br>包丁の使い方や、調味料の種類と分量が分かっただけ。<br><strong style="color:var(--goldL)">稼げる料理人になったわけではない</strong>のです。</p>
+    </div>
+    <p class="punch">AIは、使えなければ<span class="g">ただの箱。</span></p>
+    <p style="color:#c6d5e4;font-size:16px;margin-top:6px">でも、どう使うかで、時間と価値は<strong style="color:#fff">飛躍的に</strong>高められる。<br>それは、真実です。</p>
+    <div style="height:22px"></div>
+    <p style="color:#eaf1f8;font-size:17px;font-weight:700">結局のところ——<br>稼ぐ方法も、楽しむ方法も、AIは教えてくれない。<br><span style="color:var(--goldL)">「何に使うか」を自分で決めないと、何も始まらない。</span></p>
+  </div>
+</section>
+
+<!-- 消耗のからくり -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">THE MECHANISM</div>
+    <h2>なぜ、あんなに払ったのに<br><span class="em">何も残らなかったのか。</span></h2>
+    <p style="font-size:16px;color:#33475a;margin-top:16px">からくりは、シンプルです。<br><br>
+    彼らが売っているのは、<strong>「可能性」</strong>という名の夢。<br>「AIを使えば月30万」「自動化で不労所得」——その言葉に嘘はないかもしれません。実際、うまくやれば可能です。<br><br>
+    でも、そこには<strong>いちばん大事な一行</strong>が、いつも抜けている。<br><br>
+    <span class="em">「※ただし、あなたが"何をするか"を、自分で決められれば。」</span><br><br>
+    この一行が抜けているから、あなたは高額を払い、知識を受け取り、そして——「で、どうしたいの？」の前で、立ち尽くす。<br>知識は増えた。でも、行動は一歩も進んでいない。お金と時間だけが、静かに消えていく。</p>
+
+    <div style="background:var(--mist);border-radius:16px;padding:24px;margin-top:24px">
+      <p style="font-size:16px;color:#33475a">考えてみてください。もし本当に「誰でも月30万稼げる完璧なプロンプト」があるなら——<br><strong>なぜ、それを20万円で他人に売るのでしょう？</strong><br><br>
+      自分で使えば、毎月30万入るはずなのに。<br>答えは簡単です。<strong>「教えること」自体が、彼らのビジネス</strong>だから。あなたが稼ぐかどうかは、彼らにとって本質ではないのです。</p>
+    </div>
+    <p class="lead" style="margin-top:24px">私たちは、その構造に、うんざりしています。<br>だから、<strong>「知識」ではなく「動く道具」</strong>を、手渡すことにしました。</p>
+  </div>
+</section>
+
+<!-- CTA 1 -->
+<div class="ctaband">
+  <div class="wrap" id="try">
+    <p class="big" style="margin-bottom:8px">そこで。</p>
+    <p class="lead" style="margin-bottom:22px">あなたの<strong>時間と価値を、飛躍的に高める</strong>。<br>「何に使うか」が最初から決まっている、AI搭載の<strong>専用機</strong>を作りました。</p>
+    <a href="#products" class="btn">専用機を見てみる →</a>
+    <p class="note">初期費用0円・月額サブスク・いつでも退会OK</p>
+  </div>
+</div>
+
+<!-- で、どうしたいの？ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">WHY YOU GOT STUCK</div>
+    <h2>「これができる！これで稼げる！」<br>そう教える講座が、<span class="em">結局あなたに聞くこと。</span></h2>
+    <div class="talk" style="margin-top:22px">
+      <div class="bubble them" style="max-width:70%">——で、どうしたいの？</div>
+      <div class="bubble me" style="max-width:60%">→！！？</div>
+    </div>
+    <p class="lead" style="margin-top:24px">ここで、<strong>ストップ</strong>する。前に進まない。</p>
+    <p style="font-size:16px;color:#33475a;margin-top:14px">講座やスクールが結果的に何も高められないのは、<br><strong>「AIを何に使うか」が、あなた次第</strong>になってしまうから。<br><br>一番大事なところが、ずっと<strong>ボヤけたまま</strong>なんです。</p>
+
+    <div class="divider"></div>
+
+    <p style="font-size:16px;color:#33475a">広告では「プロンプトあげる！」「AIが自動でやるからあなたは自由！」と煽る。<br>でも——<strong>完璧なプロンプトは、くれない。</strong><br><br>ボヤけたままスクールへ誘導され、参加して、また聞かれる。<br><span class="em">「で、どうしたいの？」</span><br><br>この無限ループに、ハマっていませんか。</p>
+
+    <div style="background:var(--mist);border-radius:16px;padding:24px;margin-top:26px;text-align:center">
+      <p style="font-size:15px;color:var(--soft);font-weight:700">このツールは、その<strong>ボヤけた部分</strong>——</p>
+      <p class="big" style="margin:8px 0;color:var(--navy)">「何に使うか」が、明確。</p>
+      <p style="font-size:15px;color:var(--soft);font-weight:700">小学生でも、わかる。</p>
+    </div>
+    <p class="lead" style="text-align:center;margin-top:24px">では、何が価値なのか——<br><strong>あなたなら、もう分かりますよね？</strong></p>
+  </div>
+</section>
+
+<!-- CTA 2 -->
+<div class="ctaband" style="background:var(--mist)">
+  <div class="wrap">
+    <a href="#products" class="btn">「何に使うか」が決まった専用機へ →</a>
+    <p class="note">迷う時間こそ、いちばんの損失です</p>
+  </div>
+</div>
+
+<!-- あなたのリアル -->
+<section class="funnel">
+  <div class="wrap">
+    <div class="eyebrow">YOUR REALITY</div>
+    <h2>思い当たること、<span class="em">ありませんか。</span></h2>
+    <p class="lead">AIに関わって、こんな経験をした人を、私たちはたくさん見てきました。</p>
+    <div style="margin-top:20px">
+      <p style="font-size:16px;color:#33475a">□ 「ChatGPTすごい」と聞いて登録したけど、結局<strong>何を聞けばいいか分からず</strong>放置している。<br><br>
+      □ プロンプト集を買ったり保存したりしたけど、<strong>自分の仕事に当てはめられず</strong>、そのまま。<br><br>
+      □ 「AIで自動化」の動画を何本も見たのに、<strong>自分では一つも自動化できていない</strong>。<br><br>
+      □ 情報商材やスクールに<strong>お金を払ったのに</strong>、手元に残ったのは"やった気"だけ。<br><br>
+      □ 気づけば、AI関連の勉強に<strong>時間だけがどんどん溶けていく</strong>。稼ぎには、つながらない。</p>
+    </div>
+    <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;margin-top:26px">
+      <p style="font-size:16px;color:#33475a">断言します。これは、<strong>あなたのせいではありません。</strong><br><br>
+      悪いのは、「AIという万能の箱」を渡されて、「あとは自分で考えてね」と放り出される構造そのもの。<br>
+      料理をしたことがない人に、プロ用の調理器具一式と食材を渡して「さあ、稼げる料理人になって」と言っているようなものです。<br><br>
+      <strong>できるわけがない。</strong>それは、あなたの能力の問題ではないのです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY 専用機 -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">WHY "CUSTOM AI"</div>
+    <h2>なぜ、<span class="em">専用機</span>なのか。</h2>
+    <p class="lead">万能な道具は、使いこなせる人にしか価値がありません。<br>「何でもできる」は、多くの人にとって「何をすればいいか分からない」と同じ。</p>
+    <div class="knife">
+      <div class="box bad">
+        <h4>汎用AI ＋ 講座</h4>
+        <p>できることは無限。でも「あなたが何をするか」は教えてくれない。設定・プロンプト・使い道、全部あなた任せ。最初の一歩でつまずく。</p>
+      </div>
+      <div class="box good">
+        <h4>SWAN WORKS の専用機</h4>
+        <p>目的をひとつに絞り、AIを搭載。開いた瞬間に「何をするか」が決まっている。難しい設定ゼロ。迷わない。だから、成果まで最短。</p>
+      </div>
+    </div>
+    <p style="font-size:16px;color:#33475a;margin-top:24px">アプリケーションとは、そもそも<strong>「専用機」</strong>です。<br>カメラアプリは写真を、地図アプリは道案内を——目的がひとつだから、誰でも迷わず使える。<br><br>そこに<strong>AIを搭載</strong>したら、どうなるか。<br>面倒がまるごと消え、成果だけが手元に残る。それが、私たちの答えです。</p>
+
+    <div style="overflow-x:auto;margin-top:26px">
+      <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:420px">
+        <tr style="background:var(--navy);color:#fff"><th style="padding:12px;text-align:left;border-radius:10px 0 0 0">比べてみると</th><th style="padding:12px">高額スクール／講座</th><th style="padding:12px;background:var(--gold2);border-radius:0 10px 0 0">SWAN WORKSの専用機</th></tr>
+        <tr style="border-bottom:1px solid var(--line)"><td style="padding:12px;font-weight:800">最初に払う額</td><td style="padding:12px;text-align:center;color:var(--red);font-weight:800">20〜30万円</td><td style="padding:12px;text-align:center;color:var(--ok);font-weight:800">0円（月額のみ）</td></tr>
+        <tr style="border-bottom:1px solid var(--line);background:var(--mist)"><td style="padding:12px;font-weight:800">手に入るもの</td><td style="padding:12px;text-align:center">知識・プロンプト</td><td style="padding:12px;text-align:center;font-weight:800">動く道具そのもの</td></tr>
+        <tr style="border-bottom:1px solid var(--line)"><td style="padding:12px;font-weight:800">「何をするか」</td><td style="padding:12px;text-align:center;color:var(--red)">あなた任せ</td><td style="padding:12px;text-align:center;color:var(--ok);font-weight:800">最初から明確</td></tr>
+        <tr style="border-bottom:1px solid var(--line);background:var(--mist)"><td style="padding:12px;font-weight:800">合わなかったら</td><td style="padding:12px;text-align:center;color:var(--red)">大きな損失</td><td style="padding:12px;text-align:center;color:var(--ok);font-weight:800">退会するだけ</td></tr>
+        <tr><td style="padding:12px;font-weight:800">使い始めるまで</td><td style="padding:12px;text-align:center">教材を学んでから</td><td style="padding:12px;text-align:center;font-weight:800">今日から</td></tr>
+      </table>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 style="margin-top:10px">「学ぶ」から「使う」へ。<br><span class="em">順番が、逆だった。</span></h2>
+    <p style="font-size:16px;color:#33475a;margin-top:16px">多くの人は、こう思い込まされています。<br>「まずAIを学ばなきゃ」「知識をつけてから使おう」と。<br><br>でも考えてみてください。あなたは、スマホのカメラの仕組みを<strong>学んでから</strong>写真を撮りましたか？　電子レンジの電磁波の理屈を<strong>理解してから</strong>温めましたか？<br><br>違いますよね。<strong>使いながら、覚えた。</strong>それでいい。それが道具です。<br><br>専用機なら、学ぶ前に、<strong>今日から使える。</strong>使ううちに、コツが分かる。成果が出る。稼ぎや楽しみに、直接つながる。<br>——「学んでから」を待っている時間こそ、いちばんもったいない。</p>
+
+    <div class="divider"></div>
+
+    <h2 style="margin-top:10px">あなたが本当に買うべきは、<br><span class="em">「知識」ではなく「時間」。</span></h2>
+    <p style="font-size:16px;color:#33475a;margin-top:16px">出品写真の加工に、1件10分。月100件なら、それだけで<strong>約16時間</strong>。<br>集客のための投稿づくりに、毎週何時間。記事を1本書くのに、丸一日。<br><br>その時間は、二度と戻りません。<br><br>専用機は、その時間を<strong>まるごと肩代わり</strong>します。空いた時間で、あなたは"あなたにしかできないこと"に集中できる。<br>これは、単なる時短ではありません。<strong>あなたの人生の時間の、使い方そのものを変える</strong>ということです。</p>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="wrap">
+    <div class="eyebrow">THE MACHINES</div>
+    <h2>「何に使うか」が、<br>最初から決まっている専用機たち。</h2>
+    <p class="lead">どれも、AIが苦手でも大丈夫。使うほど、あなた仕様に育ちます。</p>
+
+    <div class="pcard">
+      <img class="ic" src="lp-assets/pasha-icon.png" alt="パシャっと出品">
+      <div>
+        <span class="cat">EC・フリマ出品</span>
+        <h3>パシャっと出品</h3>
+        <div class="tl">めんどくさいを、消す</div>
+        <p>スマホで商品の動画を撮るだけ。メルカリ・ヤフオク・eBayの出品写真が、背景消し・切り抜き・複数角度まで全部自動で完成。写真加工の時間を、まるごと売上に変える。<br><br>「1枚ずつ加工」の地獄から解放され、出品数を増やせる。実物をそのままキレイに見せるから、届いた商品とのギャップも起きにくく、低評価やトラブルも避けられる。<strong>撮るだけ、あとはおまかせ。</strong></p>
+        <a class="more" href="https://pasyatto-for-sale.com/" target="_blank" rel="noopener">パシャっと出品を見る →</a>
+      </div>
+    </div>
+
+    <div class="pcard">
+      <img class="ic" src="lp-assets/quima-icon.png" alt="クイマ">
+      <div>
+        <span class="cat">集客・マーケティング</span>
+        <h3>クイマ</h3>
+        <div class="tl">めんどくさいを、消す</div>
+        <p>お店の集客を、まるごとおまかせ。情報を入れるだけで、SNS投稿もPR動画も用意。特にリールやYouTube向けの動画生成が強力で、そのまま広告にまで昇華できる。<br><br>「何を投稿すればいいか分からない」「動画編集なんて無理」——その壁を、まとめて越える。集客に時間もお金もかけられない、小さなお店やひとり事業の、頼れる相棒に。</p>
+        <a class="more" href="https://quickmarketing-pro.com/" target="_blank" rel="noopener">クイマを見る →</a>
+      </div>
+    </div>
+
+    <div class="pcard">
+      <img class="ic ic-soramoto" src="lp-assets/soramoto-logo-light.svg" alt="ソラモト">
+      <div>
+        <span class="cat">記事・コンテンツ制作</span>
+        <h3>ソラモト</h3>
+        <div class="tl">まなびを、深める</div>
+        <p>伝えたいことを、読まれる記事に。テーマを選ぶだけで、構成から執筆までAIが伴走。ブログ・note・お店のお知らせ——「書かなきゃ」で止まっていた発信が、前に進む。<br><br>真っ白な画面とにらめっこする時間は、もう終わり。文章が苦手でも大丈夫。あなたの伝えたい想いを、読み手に届く形へ。続けられるから、積み上がる。</p>
+        <a class="more" href="https://soramoto.jp/" target="_blank" rel="noopener">ソラモトを見る →</a>
+      </div>
+    </div>
+
+    <p style="font-size:14px;color:var(--soft);margin-top:20px;text-align:center">※このほか、競馬をAIで楽しむ「未来競馬」など、専用機は続々準備中です。</p>
+  </div>
+</section>
+
+<!-- こんな使い方 -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">A DAY WITH IT</div>
+    <h2>たとえば、<span class="em">こんな1日。</span></h2>
+    <p class="lead">専用機がある毎日は、こう変わります。</p>
+
+    <div style="background:var(--mist);border-radius:14px;padding:22px;margin-top:20px">
+      <p style="font-weight:900;color:var(--navy);font-size:16px;margin-bottom:6px">■ 副業でフリマをやる、Aさんの場合</p>
+      <p style="font-size:15px;color:#4a5a6a">これまでは、売りたい物を撮って、パソコンで背景を消して、明るさを直して、角度違いも用意して…で1件30分。だから出品が溜まる一方だった。<br>いまは、<strong>スマホで商品をぐるっと動画に撮るだけ。</strong>あとは専用機が出品写真を並べてくれる。空いた時間で、仕入れと梱包に集中。出品数が増えて、売上も伸びた。</p>
+    </div>
+
+    <div style="background:var(--mist);border-radius:14px;padding:22px;margin-top:16px">
+      <p style="font-weight:900;color:var(--navy);font-size:16px;margin-bottom:6px">■ 小さなお店を営む、Bさんの場合</p>
+      <p style="font-size:15px;color:#4a5a6a">「SNSが大事なのは分かる。でも投稿を考える時間も、動画を作るスキルもない。」<br>いまは、お店の情報を入れるだけで、<strong>投稿もPR動画も用意</strong>できる。リールやYouTube向けの動画は、そのまま広告にも使える。集客に、やっと手が回るようになった。</p>
+    </div>
+
+    <div style="background:var(--mist);border-radius:14px;padding:22px;margin-top:16px">
+      <p style="font-weight:900;color:var(--navy);font-size:16px;margin-bottom:6px">■ 発信を始めたい、Cさんの場合</p>
+      <p style="font-size:15px;color:#4a5a6a">「伝えたいことはある。でも、書き出すと手が止まる。」<br>いまは、<strong>テーマを選ぶだけ</strong>で、構成から文章までAIが伴走。真っ白な画面と向き合う時間がなくなり、発信が続くようになった。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4つの体験（世界観） -->
+<section class="products">
+  <div class="wrap">
+    <div class="eyebrow">OUR PROMISE</div>
+    <h2>私たちが届ける、<span class="em">4つの体験。</span></h2>
+    <p class="lead">SWAN WORKSのすべての専用機は、必ずこのどれかを実現します。</p>
+    <div style="margin-top:18px">
+      <div style="background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:18px;margin-bottom:12px">
+        <p style="font-weight:900;font-size:16px">めんどくさいを、消す</p>
+        <p style="font-size:14px;color:#4a5a6a;margin-top:4px">手間と時間のかかる作業を、AIがまるごと肩代わり。<span style="color:var(--gold2);font-weight:700">例：パシャっと出品／クイマ／ソラモト</span></p>
+      </div>
+      <div style="background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:18px;margin-bottom:12px">
+        <p style="font-weight:900;font-size:16px">たのしみを、増やす</p>
+        <p style="font-size:14px;color:#4a5a6a;margin-top:4px">趣味や娯楽を、AIがもっと面白く、もっと深く。<span style="color:var(--gold2);font-weight:700">例：未来競馬（開発中）</span></p>
+      </div>
+      <div style="background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:18px;margin-bottom:12px">
+        <p style="font-weight:900;font-size:16px">まなびを、深める</p>
+        <p style="font-size:14px;color:#4a5a6a;margin-top:4px">理解と上達を、AIが隣で加速。<span style="color:var(--gold2);font-weight:700">例：株スク（開発中）</span></p>
+      </div>
+      <div style="background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:18px">
+        <p style="font-weight:900;font-size:16px">不安を、安心・安全へ</p>
+        <p style="font-size:14px;color:#4a5a6a;margin-top:4px">見えない不安を、AIがそっと支える。<span style="color:var(--gold2);font-weight:700">例：VoiceKey／MIMAMORO（開発中）</span></p>
+      </div>
+    </div>
+    <p style="font-size:16px;color:#33475a;margin-top:24px;text-align:center"><strong>「AIのすごい力を、"詳しくない人"にこそ届ける。」</strong><br>それが、SWAN WORKSのミッションです。</p>
+  </div>
+</section>
+
+<!-- サブスク＝リスクゼロ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">NO BIG RISK</div>
+    <h2>しかも——<br>カード番号を見ながら、<span class="em">もう悩まなくていい。</span></h2>
+    <p class="lead">高額なスクールや講座に誘われて、清水の舞台から飛び降りる。<br>そんな決断は、もう要りません。なぜなら——</p>
+    <p class="big" style="color:var(--navy);margin:20px 0">サブスクで、気軽に使えるから。</p>
+    <p style="font-size:16px;color:#33475a">あなたが払うのは、<strong>専用のツール</strong>——使うほど<strong>あなた仕様に育っていくAI</strong>を、使い倒す利用料だけ。<br>何をするかも、明確。<br><br>月額料金＋従量課金なので、<strong>AIをどれだけぶん回すか</strong>でコストが変わるだけ。無駄がない。</p>
+
+    <div class="riskgrid">
+      <div class="r r1">
+        <h4>大きな一括払いだと…</h4>
+        <p>「合わなかった」「やっぱり自分には無理だった」——このパターンは、正直、なくはない。そして最初に大金を払っていたら、それは<strong>大きな損失</strong>になる。実際、そういう人、結構いるんです。</p>
+      </div>
+      <div class="r r2">
+        <h4>でも、サブスクなら</h4>
+        <p>合わなければ、<strong>退会すればいいだけ。</strong>利用を止めればいい。だからリスクは、ほぼゼロ。まず試して、自分に合うかを、自分の手で確かめられる。</p>
+      </div>
+    </div>
+    <p class="lead" style="text-align:center;margin-top:26px">トライして。<br><strong>時間と価値を高める体験を。</strong><br>——その時間と価値を、これ以上、無駄にしないで。</p>
+
+    <div style="background:var(--mist);border-radius:16px;padding:24px;margin-top:26px">
+      <p style="font-size:15.5px;color:#33475a">もう一度、整理しましょう。<br><br>
+      高額スクールは、大金を先に払い、知識だけを受け取り、使い道は自分で探す——そして多くの人が、その入口で止まります。<br>専用機は、初期費用0円で始め、"何をするか"が決まった道具をすぐ使い、合わなければ退会するだけ。<br><br>
+      どちらが、あなたの<strong>時間と価値を、本当に守ってくれる</strong>でしょうか。<br>答えは、もう出ていますよね。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA 3 -->
+<div class="ctaband">
+  <div class="wrap">
+    <a href="#products" class="btn">リスクほぼゼロで、始める →</a>
+    <p class="note">初期費用0円・いつでも退会OK・まずは無料から</p>
+  </div>
+</div>
+
+<!-- 今はじめる理由 -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">WHY NOW</div>
+    <h2>「いつかやろう」の<br><span class="em">"いつか"は、来ません。</span></h2>
+    <p style="font-size:16px;color:#33475a;margin-top:16px">AIは、すごい速さで進化しています。<br>「もう少し詳しくなってから」「落ち着いたら」——そう言っている間にも、行動した人との差は、静かに開いていきます。<br><br>
+    でも、焦って高額スクールに飛び込む必要は、まったくありません。<br>必要なのは、<strong>今日、小さく試すこと。</strong>リスクほぼゼロで、手を動かしてみること。<br><br>
+    専用機は、そのための"入口"です。難しい勉強も、大きな出費も要らない。開いて、使って、「あ、これならできる」を体験する。<br>その小さな一歩が、"いつか"を"今日"に変えます。</p>
+
+    <div style="background:var(--navy);color:#fff;border-radius:16px;padding:26px;margin-top:24px;text-align:center">
+      <p style="font-size:15px;color:#c6d5e4">迷っている時間も、悩んでいる時間も、<br>あなたの大切な時間が、いま、この瞬間も過ぎていきます。</p>
+      <p class="big" style="color:#fff;margin-top:14px">その時間を、価値に変えよう。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 心の声（反論処理） -->
+<section class="products">
+  <div class="wrap">
+    <div class="eyebrow">YOUR INNER VOICE</div>
+    <h2>それでも、<span class="em">こう思いますよね。</span></h2>
+    <p class="lead">ここまで読んで、心に浮かぶ「でも…」に、正直にお答えします。</p>
+
+    <div style="margin-top:20px">
+      <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:14px">
+        <p style="font-weight:900;color:var(--navy);font-size:16px">「でも、どうせまた騙されるんじゃ…」</p>
+        <p style="font-size:14.5px;color:#4a5a6a;margin-top:8px">その警戒心、正しいです。だからこそ、私たちは<strong>大きな一括払いを求めません。</strong>月額サブスクで、まず無料から。合わなければ退会するだけ。あなたが失うものが、そもそも無い設計にしています。騙しようがないのです。</p>
+      </div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:14px">
+        <p style="font-weight:900;color:var(--navy);font-size:16px">「機械オンチな私に、使えるかな…」</p>
+        <p style="font-size:14.5px;color:#4a5a6a;margin-top:8px">むしろ、そういう方のために作りました。難しい言葉も、複雑な設定もありません。スマホのアプリを開くのと同じ感覚で使えます。「使えた！」の一言を、いちばん大切にしています。</p>
+      </div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:14px">
+        <p style="font-weight:900;color:var(--navy);font-size:16px">「時間がないんだよね…」</p>
+        <p style="font-size:14.5px;color:#4a5a6a;margin-top:8px">その"時間がない"を解決するための道具です。むしろ、作業をAIに任せることで、時間が生まれます。始めるのに必要な時間は、ほんの数分。学ぶ時間は要りません。</p>
+      </div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px">
+        <p style="font-weight:900;color:var(--navy);font-size:16px">「本当に0円で始められるの？」</p>
+        <p style="font-size:14.5px;color:#4a5a6a;margin-top:8px">はい。初期費用はかかりません。まず無料の範囲で試して、「これは使える」と感じたら、月額サブスクへ。あなたのペースで、無理なく。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">HOW IT WORKS</div>
+    <h2>始め方は、<span class="em">3ステップ。</span></h2>
+    <div class="step"><div class="n">1</div><div><h4>専用機を選ぶ</h4><p>「出品写真を作りたい」「集客したい」「記事を書きたい」——あなたの目的に合う専用機を選ぶだけ。何に使うかは、もう決まっています。</p></div></div>
+    <div class="step"><div class="n">2</div><div><h4>まず無料で試す</h4><p>難しい設定はありません。開いたら、もう使える。まずは無料の範囲で、その手ごたえを確かめてください。</p></div></div>
+    <div class="step"><div class="n">3</div><div><h4>サブスクで、使い倒す</h4><p>気に入ったら月額サブスクへ。使うほどAIがあなた仕様に育ち、あなただけの一台になっていきます。合わなければ、いつでも退会OK。</p></div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">FAQ</div>
+    <h2>よくある質問</h2>
+    <details><summary>AIやパソコンが苦手でも使えますか？</summary><div class="a">はい。SWAN WORKSの専用機は「AIが苦手な人にこそ届ける」ために作っています。難しい設定はなく、ボタンも最小限。「何に使うか」が最初から決まっているので、迷いません。</div></details>
+    <details><summary>結局、これも高額なスクールと同じでは？</summary><div class="a">まったく違います。スクールは「知識」を売り、使い道はあなた任せ。私たちが提供するのは、目的が決まった「道具そのもの」です。しかもサブスク（月額）なので、初期に大金を払う必要はありません。</div></details>
+    <details><summary>本当にサブスクだけ？追加費用は？</summary><div class="a">初期費用は0円。月額料金＋従量課金（AIをたくさん使った分だけ）というシンプルな仕組みです。カード番号を見ながら数十万円を悩む、あの瞬間はもうありません。</div></details>
+    <details><summary>合わなかったら？</summary><div class="a">いつでも退会できます。利用を止めれば、それ以上の費用はかかりません。だからこそ、まず気軽に試してほしいのです。リスクはほぼゼロです。</div></details>
+    <details><summary>「使うほど育つ」ってどういうこと？</summary><div class="a">使っていくうちに、あなたの好みや使い方に、道具の側が近づいていきます。汎用の"何でも屋"ではなく、あなた専用の相棒に育っていく——それが専用機の醍醐味です。</div></details>
+    <details><summary>本当に稼げますか？</summary><div class="a">正直にお答えします。「使うだけで必ず稼げる」とは言いません。それは、あの高額スクールと同じ嘘になってしまうから。私たちが約束できるのは、あなたの<strong>時間と価値を高める道具</strong>を、リスクほぼゼロで手渡すこと。その道具をどう活かすかで、結果は変わります。ただ、"何をするか"が明確な分、汎用AIをゼロから使うより、はるかに成果までが近いのは確かです。</div></details>
+    <details><summary>他のAIツールと何が違うの？</summary><div class="a">多くのAIツールは「何でもできる」汎用型で、使い道はあなた任せ。SWAN WORKSは「出品写真を作る」「集客する」など、<strong>目的をひとつに絞った専用機</strong>です。だから開いた瞬間に迷わない。AIが苦手な人ほど、その差を実感できます。</div></details>
+    <details><summary>スマホだけでも使えますか？</summary><div class="a">はい。スマホで完結する設計を大切にしています。このページもスマホで気持ちよく読めるように作っています。</div></details>
+  </div>
+</section>
+
+<!-- 運営の想い -->
+<section class="truth">
+  <div class="wrap">
+    <div class="eyebrow">WHY WE BUILT THIS</div>
+    <h2>なぜ、私たちが<br>これを作ったのか。</h2>
+    <div class="card">
+      <p>SWAN WORKSは、大きな会社ではありません。<strong style="color:#fff">"詳しくない人"の気持ちが分かる作り手</strong>が、ひとつずつ手で作っています。<br><br>
+      だから、いつも自分に問いかけます。「これ、パソコンが苦手な母でも使えるかな？」と。<br><br>
+      世の中には、AIの名を借りて、不安を煽り、高額を売りつけるビジネスがあふれています。私たちは、その真逆をいきたい。<br><strong style="color:var(--goldL)">むずかしいことは、こちらで引き受ける。</strong>あなたには、成果だけを受け取ってほしい。</p>
+    </div>
+    <p class="punch">AIが苦手な人こそ、<br><span class="g">いちばんラクになれる。</span></p>
+    <p style="color:#c6d5e4;font-size:16px">その世界を、本気で作りにいきます。</p>
+  </div>
+</section>
+
+<!-- 育つということ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">IT GROWS WITH YOU</div>
+    <h2>使うほど、<span class="em">あなただけの一台に。</span></h2>
+    <p style="font-size:16px;color:#33475a;margin-top:16px">世の中の汎用AIは、誰が使っても同じ"平均的な答え"を返します。100人が使えば、100人に同じ顔を見せる。<br><br>
+    でも、専用機は違います。あなたが使えば使うほど、<strong>あなたの好みや、いつものやり方に寄り添って</strong>いきます。<br>まるで、長く一緒に働いてきたスタッフが、言わなくても察してくれるように。<br><br>
+    最初は「みんなの道具」。それが、使ううちに<strong>「あなたの相棒」</strong>へと育っていく。<br>他の誰のものでもない、世界にひとつのあなた仕様。——これは、汎用AIには決して真似できない体験です。</p>
+  </div>
+</section>
+
+<!-- 声（イメージ） -->
+<section class="products">
+  <div class="wrap">
+    <div class="eyebrow">VOICES</div>
+    <h2>先に始めた人たちの、<span class="em">こんな声。</span></h2>
+    <p class="lead">※サービス体験にもとづくイメージです。</p>
+    <div style="margin-top:18px">
+      <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:12px">
+        <p style="font-size:15px;color:#33475a">「スクールに30万払って挫折した私でも、これは使えた。<strong>"何をするか"が決まってる</strong>って、こんなにラクなんですね。」</p>
+        <p style="font-size:13px;color:var(--soft);margin-top:8px;font-weight:700">— 40代・フリマ副業</p>
+      </div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:12px">
+        <p style="font-size:15px;color:#33475a">「難しい設定がなくて、開いたら使えた。<strong>AIって私には無理</strong>だと思ってたのが、うそみたい。」</p>
+        <p style="font-size:13px;color:var(--soft);margin-top:8px;font-weight:700">— 50代・小さなお店の店主</p>
+      </div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px">
+        <p style="font-size:15px;color:#33475a">「合わなかったら退会すればいいと思うと、<strong>気軽に始められた</strong>。結局、そのまま使い続けてます。」</p>
+        <p style="font-size:13px;color:var(--soft);margin-top:8px;font-weight:700">— 30代・発信を始めた会社員</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SWAN WORKSという名前 -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">THE NAME</div>
+    <h2>SWAN WORKS という名前に<br>込めたもの。</h2>
+    <p style="font-size:16px;color:#33475a;margin-top:16px">白鳥（SWAN）は、水面の上では優雅に、静かに進んでいきます。<br>でも水面下では、休むことなく<strong>足を動かし続けている。</strong><br><br>
+    私たちが作りたいのは、まさにそれです。<br>あなたの目に見えるのは、「かんたん」「迷わない」「すぐできた」という優雅な体験だけ。<br>その水面下で、AIという複雑な仕組みが、あなたの代わりに懸命に働いている。<br><br>
+    <strong>むずかしさは、こちらの水面下で引き受ける。</strong><br>あなたには、優雅に前へ進む体験だけを。——それが、SWAN WORKSです。</p>
+  </div>
+</section>
+
+<!-- 最後のひと押し -->
+<section class="truth">
+  <div class="wrap">
+    <div class="eyebrow">ONE LAST THING</div>
+    <h2>もう、<br>遠回りは、やめよう。</h2>
+    <p style="color:#c6d5e4;font-size:16px;margin-top:18px">高額な講座で、遠回りして、結果が伴わない。<br>そんな時間と価値の使い方を、これ以上、続ける必要はありません。<br><br>
+    あなたに必要なのは、分厚い知識でも、大きな決断でもない。<br><strong style="color:var(--goldL)">「何をするか」が決まった、動く道具</strong>を、今日、ひとつ手にすること。<br><br>
+    合わなければ、やめればいい。リスクは、ほぼゼロ。<br>だったら——試さない理由が、ありますか。</p>
+    <p class="punch">トライして。<br><span class="g">時間と価値を、高める体験を。</span></p>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="wrap">
+    <img src="lp-assets/swanworks_wide_02.png" alt="SWAN WORKS">
+    <h2>AIを、あなたの専用機に。</h2>
+    <p>「で、どうしたいの？」の無限ループから、抜け出す時です。<br>何に使うかは、もう決まっている。<br>あとは、あなたが一歩を踏み出すだけ。</p>
+    <a href="#products" class="btn">いま、専用機を試す →</a>
+    <p style="color:#8fa6bc;font-size:13px;margin-top:16px">初期費用0円・月額サブスク・いつでも退会OK</p>
+  </div>
+</section>
+
+<footer>
+  SWAN WORKS（運営：諏訪光則）　—　AIのすごい力を、"詳しくない人"にこそ届ける。<br>
+  <a href="https://swanworks.jp/" target="_blank" rel="noopener">swanworks.jp</a>　|　お問い合わせ：swanworks.jp@gmail.com<br>
+  © 2026 SWAN WORKS
+</footer>
+
+</body>
+</html>
