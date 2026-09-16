@@ -12,10 +12,33 @@ const senyoukiPages = [
   'senyouki.html', 'senyouki-v2.html', 'senyouki-v3.html'
 ];
 
-test('Pasha uses its external landing page instead of a local page', () => {
+test('Pasha uses its production landing page instead of a local page', () => {
   assert.equal(fs.existsSync(path.join(publicDir, 'lp-pasha.html')), false);
   const home = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
-  assert.match(home, /href="https:\/\/video-analyzer-5d8w\.onrender\.com"/);
+  assert.match(home, /href="https:\/\/pasyatto-for-sale\.com\/"/);
+});
+
+test('homepage preserves preregistration DOM, behavior, and CTA tracking', () => {
+  const home = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
+  assert.match(home, /<form class="preregister" data-preregister-form novalidate>/);
+  assert.match(home, /data-preregister-products/);
+  assert.match(home, /name="source" type="hidden" value="index"/);
+  assert.match(home, /<script src="preregister\.js" defer><\/script>/);
+  assert.match(home, /<script src="ga4-events\.js" defer><\/script>/);
+  assert.match(home, /<body data-ga4-variant="homepage-v2">/);
+});
+
+test('homepage exposes the four official social links', () => {
+  const home = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
+  const links = [
+    'https://www.instagram.com/swan.works/',
+    'https://www.threads.net/@swan.works',
+    'https://x.com/swanworks_jp',
+    'https://lin.ee/wwPFt0xR'
+  ];
+  for (const href of links) {
+    assert.ok(home.includes(`href="${href}"`), `index.html: missing SNS link ${href}`);
+  }
 });
 
 test('every supplied page loads the shared preregistration form', () => {
