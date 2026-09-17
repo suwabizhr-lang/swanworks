@@ -41,6 +41,7 @@ Slack依頼からGitHub Issueの作成、実装、検証、結果通知までの
 | `npm test` | 失敗。変更前にも同じ失敗を確認 |
 | テスト失敗の詳細 | `test/analytics.test.js` は `express` が未インストール（`MODULE_NOT_FOUND`）。`test/static-site.test.js` は `mission.html must load preregister.js` のアサーション失敗 |
 | 対象外の修正 | 実施せず |
+| Issue #30 確認（2026-09-17 UTC） | 本ファイルのみ1行追加。対象ファイル限定ガード確認済み。実DB書き込み0件・実メール送信0件（テストはモック使用）。`npm test` は変更前後とも `analytics.test.js`・`static-site.test.js` で失敗 |
 | PR作成・Slack通知の受信 | 未確認。実際の参照先と確認日時は受信確認後に記録 |
 
 この記録はドキュメント追加時の検証結果です。Slackへの通知成功や自動開発ループ全体の成功を示すものではありません。
