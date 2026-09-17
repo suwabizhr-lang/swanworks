@@ -93,8 +93,10 @@
   /* 事業（プロダクト） */
   .products{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
   .pcard{display:flex;gap:18px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:26px;align-items:flex-start}
-  .pcard .ic{flex:0 0 54px;height:54px;border-radius:6px;background:var(--bg2);display:grid;place-items:center;overflow:hidden}
+  .pcard .ic{flex:0 0 56px;height:56px;border-radius:6px;background:var(--bg2);display:grid;place-items:center;overflow:hidden;padding:8px}
   .pcard .ic img{max-width:40px;max-height:40px;width:auto;height:auto}
+  .pcard .ic.cloud{background:#eef4fa}
+  .pcard .ic.cloud img{max-width:34px;max-height:34px}
   .pcard h3{font-size:17px;color:var(--navy);font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .tag{font-size:11px;font-weight:700;padding:2px 9px;border-radius:2px;letter-spacing:.04em}
   .tag.live{background:#eaf3ec;color:#2c6b3f}
@@ -154,9 +156,10 @@
       <span class="bn">SWAN WORKS</span>
     </a>
     <nav class="gnav" id="global-nav">
+      <a href="index.html">ホーム</a>
+      <a href="#business">プロダクト</a>
       <a href="mission.html">ミッション</a>
-      <a href="#business">事業</a>
-      <a href="#think">私たちの考え</a>
+      <a href="philosophy.html">私たちの考え</a>
       <a href="#company">会社情報</a>
       <a class="cta" href="#contact">お問い合わせ</a>
     </nav>
@@ -242,7 +245,7 @@
           </div>
         </div>
         <div class="pcard">
-          <div class="ic"><img src="assets/soramoto-logo-dark.svg" alt=""></div>
+          <div class="ic cloud"><img src="assets/soramoto-cloud-icon.svg" alt="ソラモト"></div>
           <div>
             <h3>ソラモト <span class="tag live">公開</span></h3>
             <p>テーマを選ぶだけで、読まれる記事づくりを支える専用機。「書かなきゃ」で止まっていた発信を前へ進めます。</p>
@@ -335,8 +338,9 @@
       <div class="foot-links">
         <div>
           <h4>SITE</h4>
+          <a href="index.html">ホーム</a>
+          <a href="#business">プロダクト</a>
           <a href="mission.html">ミッション</a>
-          <a href="#business">事業</a>
           <a href="philosophy.html">私たちの考え</a>
           <a href="#company">会社情報</a>
           <a href="#preregister">先行案内</a>
