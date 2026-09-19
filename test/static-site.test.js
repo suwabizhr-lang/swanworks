@@ -41,6 +41,22 @@ test('homepage exposes the four official social links', () => {
   }
 });
 
+test('homepage links to privacy policy and terms pages', () => {
+  const home = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
+  assert.match(home, /href="privacy\.html"/);
+  assert.match(home, /href="terms\.html"/);
+  assert.ok(fs.existsSync(path.join(publicDir, 'privacy.html')));
+  assert.ok(fs.existsSync(path.join(publicDir, 'terms.html')));
+
+  const privacy = fs.readFileSync(path.join(publicDir, 'privacy.html'), 'utf8');
+  assert.match(privacy, /Google API Services User Data Policy/);
+  assert.match(privacy, /Limited Use/);
+  assert.match(privacy, /メールは自動送信しません/);
+
+  const terms = fs.readFileSync(path.join(publicDir, 'terms.html'), 'utf8');
+  assert.match(terms, /href="privacy\.html"/);
+});
+
 test('every supplied page loads the shared preregistration form', () => {
   for (const page of pages) {
     const html = fs.readFileSync(path.join(publicDir, page), 'utf8');

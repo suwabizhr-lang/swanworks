@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>プライバシーポリシー | SWAN WORKS</title>
+  <meta name="description" content="SWAN WORKSのプライバシーポリシーです。Google APIを利用するサポートメール対応を含む個人情報の取扱いを説明します。">
+  <style>
+    :root { --navy:#12233b; --ink:#1a1f27; --sub:#5b6472; --line:#e4e8ee; --bg2:#f5f7fa; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:#fff; font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP","Yu Gothic",sans-serif; line-height:1.9; }
+    header { border-bottom:1px solid var(--line); background:#fff; }
+    .nav,.content,footer div { max-width:920px; margin:0 auto; padding-left:24px; padding-right:24px; }
+    .nav { min-height:70px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { color:var(--navy); font-weight:700; letter-spacing:.1em; text-decoration:none; }
+    .nav a:last-child { color:var(--navy); }
+    main { background:var(--bg2); padding:56px 0 80px; }
+    .content { background:#fff; border:1px solid var(--line); border-radius:8px; padding-top:48px; padding-bottom:56px; }
+    h1 { margin:0 0 8px; color:var(--navy); font-size:32px; }
+    h2 { margin:40px 0 12px; color:var(--navy); font-size:21px; }
+    h3 { margin:24px 0 8px; color:var(--navy); font-size:17px; }
+    p,li { color:var(--sub); }
+    a { color:#174f88; }
+    .date { margin-top:0; font-size:14px; }
+    .note { padding:18px 20px; border-left:4px solid var(--navy); background:var(--bg2); }
+    footer { padding:28px 0; background:#0e1c2f; color:#aeb8c6; }
+    footer a { color:#fff; }
+    @media (max-width:640px) { main { padding:24px 0 48px; } .content { border-left:0; border-right:0; border-radius:0; padding-top:32px; } h1 { font-size:27px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav"><a class="brand" href="index.html">SWAN WORKS</a><a href="mailto:swanworks.jp@gmail.com">お問い合わせ</a></div>
+  </header>
+  <main>
+    <article class="content">
+      <h1>プライバシーポリシー</h1>
+      <p class="date">制定・最終更新日：2026年9月19日</p>
+      <p>SWAN WORKS（以下「当事業者」といいます）は、当事業者が運営するWebサイト、サービスおよびサポート窓口で取り扱う情報を、次の方針に従って適切に管理します。</p>
+
+      <h2>1. 取得する情報</h2>
+      <p>当事業者は、提供する機能に応じて次の情報を取得します。</p>
+      <ul>
+        <li>お問い合わせ・先行案内登録に含まれる氏名、メールアドレス、問い合わせ内容、希望するサービス</li>
+        <li>サポートメールの送受信に必要な差出人、宛先、Reply-To、件名、受信日時、本文、添付情報、メッセージID、スレッドIDおよびラベル情報</li>
+        <li>Google OAuthで許可されたアクセストークン・更新トークンなどの認証情報</li>
+        <li>IPアドレス、ブラウザ情報、閲覧ページ、利用日時などのアクセス情報</li>
+        <li>サポート対応の判定結果、下書き、承認・送信結果および監査に必要な操作記録</li>
+      </ul>
+
+      <h2>2. 利用目的</h2>
+      <ul>
+        <li>お問い合わせの受付、本人への回答、サポート品質の維持</li>
+        <li>対象サービスの判別、担当チャンネルへの振り分け、回答下書きの作成、承認後の返信</li>
+        <li>先行案内や、利用者が希望した情報の配信</li>
+        <li>不正利用の防止、障害調査、セキュリティ確保、監査</li>
+        <li>法令上の義務への対応および権利の保護</li>
+      </ul>
+
+      <h2>3. Gmailデータを利用するサポート対応</h2>
+      <p>当事業者のサポートシステムは、Google OAuthでアカウント所有者から許可された範囲に限りGmail APIを利用します。主な処理は次のとおりです。</p>
+      <ol>
+        <li>問い合わせ候補のメールを取得し、件名タグ、受信エイリアス、X-Productヘッダー、本文の順に対象サービスを判別します。差出人情報はサービス判別には利用しません。</li>
+        <li>判定根拠、確信度、要約など、対応に必要な最小限の情報をアクセス制限されたSlackチャンネルへ共有します。</li>
+        <li>公開済みのFAQ・ナレッジを基に回答案を作成し、高リスクな内容は有人対応へエスカレーションします。</li>
+        <li>メールは自動送信しません。許可された担当者がSlack上でApproveまたはEditを実行した場合に限り、元の問い合わせ先へ返信します。Escalateでは送信しません。</li>
+      </ol>
+      <p class="note">Gmailのメール原文はサポート管理データベースへ保存しません。処理済み判定、ルーティング、回答下書き、承認・配信結果など、運用に必要な情報だけを記録します。</p>
+
+      <h2>4. 外部サービスでの処理</h2>
+      <p>当事業者は、上記の目的に必要な範囲で次のサービスを利用します。各提供者は、当事業者の委託先として、各社の規約・プライバシーポリシーおよび当事業者の設定に基づき情報を処理します。</p>
+      <ul>
+        <li>Google Cloud、Gmail API：メールの取得、認証、ラベル操作</li>
+        <li>Google Gemini API：問い合わせの分類および回答下書きの生成</li>
+        <li>Slack：非公開サポートチャンネルでの確認、承認、エスカレーション</li>
+        <li>Supabase：サポート処理・承認・配信結果の記録</li>
+        <li>Render：サポートシステムの実行および環境変数の保管</li>
+        <li>Resend：承認済み返信メールの配信</li>
+        <li>Google Analytics：Webサイトの利用状況の把握（設定されている場合）</li>
+      </ul>
+      <p>法令に基づく場合を除き、本人の同意なく、利用目的を超えて個人情報を第三者へ提供しません。</p>
+
+      <h2>5. Google APIから取得したデータの取扱い</h2>
+      <p>Google APIから受け取った情報の利用および他のアプリへの転送は、<a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>（Limited Use要件を含みます）に従います。</p>
+      <ul>
+        <li>利用者が明示的に利用するサポート機能の提供・改善に必要な範囲でのみ使用します。</li>
+        <li>広告配信、信用評価、データ販売を目的として使用しません。</li>
+        <li>法令対応、セキュリティ調査、本人の明示的同意、またはサポート機能の運用に必要な場合を除き、人がメール内容を閲覧しません。</li>
+      </ul>
+
+      <h2>6. 安全管理</h2>
+      <p>OAuth認証情報、APIキーその他の秘密情報は、アクセス制限された実行環境の環境変数に保存し、ソースコード、Issue、Pull Request、通常ログには記録しません。権限を必要最小限に制限し、通信の暗号化、監査記録、個人情報を減らしたログ出力などの安全管理措置を講じます。</p>
+
+      <h2>7. 保存期間・削除</h2>
+      <p>Gmail上のメールは、アカウント所有者のGmail設定および運用方針に従って保存されます。サポート処理の記録は、対応の継続、重複送信防止、監査、法令対応に必要な期間に限って保存し、不要になった情報は安全な方法で削除します。削除または利用停止の申出は、下記窓口で受け付けます。</p>
+
+      <h2>8. 開示・訂正・削除等の請求</h2>
+      <p>本人から、保有する個人情報の開示、訂正、利用停止または削除等の申出があった場合、本人確認のうえ、法令に従って対応します。</p>
+
+      <h2>9. ポリシーの変更</h2>
+      <p>法令、サービス内容または利用する外部サービスの変更に応じて、本ポリシーを改定することがあります。重要な変更は、本ページその他の適切な方法で案内します。</p>
+
+      <h2>10. お問い合わせ窓口</h2>
+      <p>SWAN WORKS（運営責任者：諏訪 光則）<br>メール：<a href="mailto:swanworks.jp@gmail.com">swanworks.jp@gmail.com</a></p>
+    </article>
+  </main>
+  <footer><div>© 2026 SWAN WORKS. <a href="terms.html">利用規約</a> / <a href="index.html">ホーム</a></div></footer>
+</body>
+</html>
