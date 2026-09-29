@@ -6,11 +6,58 @@ const path = require('node:path');
 const publicDir = path.join(__dirname, '..', 'public');
 const pages = [
   'index.html', 'mission.html', 'philosophy.html',
-  'lp-quima.html', 'lp-soramoto.html', 'lp-mirai-keiba.html'
+  'lp-mirai-keiba.html'
 ];
 const senyoukiPages = [
   'senyouki.html', 'senyouki-v2.html', 'senyouki-v3.html'
 ];
+
+test('retired product landing pages permanently redirect to canonical LPs', async (t) => {
+  const server = require('../src/server').listen(0);
+  t.after(() => server.close());
+  const baseUrl = `http://127.0.0.1:${server.address().port}`;
+  for (const [slug, destination] of [
+    ['lp-quima', 'https://quickmarketing-pro.com/lp.html'],
+    ['lp-soramoto', 'https://soramoto.jp/lp.html']
+  ]) {
+    assert.equal(fs.existsSync(path.join(publicDir, `${slug}.html`)), false);
+    for (const suffix of ['.html', '']) {
+      for (const query of ['', '?utm_source=qr&utm_campaign=spring%20sale']) {
+        for (const method of ['GET', 'HEAD']) {
+          const response = await fetch(`${baseUrl}/${slug}${suffix}${query}`, {
+            method, redirect: 'manual'
+          });
+          assert.equal(response.status, 301);
+          assert.equal(response.headers.get('location'), destination + query);
+          await response.text();
+        }
+      }
+    }
+  }
+  const remaining = await fetch(`${baseUrl}/lp-mirai-keiba.html`);
+  assert.equal(remaining.status, 200);
+  assert.match(await remaining.text(), /未来競馬/);
+});
+
+test('public files contain no links to retired landing pages', () => {
+  for (const file of fs.readdirSync(publicDir, { recursive: true })) {
+    if (!/\.(html|css|js|svg|xml|txt|json)$/.test(file)) continue;
+    const content = fs.readFileSync(path.join(publicDir, file), 'utf8');
+    assert.doesNotMatch(content, /lp-(?:quima|soramoto)\.html/, file);
+  }
+});
+
+test('homepage product cards and footer link to the official destinations', () => {
+  const home = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
+  for (const destination of [
+    'https://pasyatto-for-sale.com/',
+    'https://quickmarketing-pro.com/lp.html',
+    'https://soramoto.jp/'
+  ]) {
+    assert.equal(home.split(`href="${destination}"`).length - 1, 2, destination);
+  }
+  assert.ok(!home.includes('href="https://quickmarketing-pro.com/"'));
+});
 
 test('Pasha uses its production landing page instead of a local page', () => {
   assert.equal(fs.existsSync(path.join(publicDir, 'lp-pasha.html')), false);
@@ -57,8 +104,8 @@ test('homepage links to privacy policy and terms pages', () => {
   assert.match(terms, /href="privacy\.html"/);
 });
 
-test('every supplied page loads the shared preregistration form', () => {
-  for (const page of pages) {
+test('homepage and remaining product LP load shared preregistration assets', () => {
+  for (const page of ['index.html', 'lp-mirai-keiba.html']) {
     const html = fs.readFileSync(path.join(publicDir, page), 'utf8');
     assert.match(html, /href="preregister\.css"/, `${page} must load preregister.css`);
     assert.match(html, /src="preregister\.js"/, `${page} must load preregister.js`);

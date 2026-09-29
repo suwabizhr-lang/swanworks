@@ -2,6 +2,14 @@
 
 Node.js + Expressで `public/` の静的サイトを配信し、`POST /api/preregister` で先行案内を受け付けます。
 
+製品LPは各製品のドメインで管理します。旧 `/lp-quima.html` と `/lp-soramoto.html`
+（拡張子なしも含む）は、それぞれ `https://quickmarketing-pro.com/lp.html` と
+`https://soramoto.jp/lp.html` へ301リダイレクトし、クエリパラメータを保持します。
+`public/lp-mirai-keiba.html` は引き続き配信します。
+
+検証は `npm test` と `npm run build` で実行します。静的ファイルはそのまま配信するため、
+buildは既存の `npm run check` によるJavaScript構文チェックを実行します。
+
 ## セットアップ
 
 1. `npm install`
