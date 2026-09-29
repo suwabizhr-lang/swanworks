@@ -30,6 +30,18 @@ app.use((req, res, next) => {
 });
 app.use(express.json({ limit: '16kb' }));
 
+// Keep inbound links working while each product owns its canonical landing page.
+for (const [slug, destination] of [
+  ['lp-quima', 'https://quickmarketing-pro.com/lp.html'],
+  ['lp-soramoto', 'https://soramoto.jp/lp.html']
+]) {
+  app.get([`/${slug}`, `/${slug}.html`], (req, res) => {
+    const queryIndex = req.originalUrl.indexOf('?');
+    const query = queryIndex === -1 ? '' : req.originalUrl.slice(queryIndex);
+    res.redirect(301, destination + query);
+  });
+}
+
 app.get([...trackedPages.keys()], (req, res, next) => {
   const page = trackedPages.get(req.path);
   if (!page) return next();
