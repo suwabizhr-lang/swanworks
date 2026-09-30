@@ -131,9 +131,12 @@
   .cta-band h2{font-family:'Noto Serif JP',serif;font-weight:600;font-size:25px;letter-spacing:.03em}
   .cta-band p{color:rgba(255,255,255,.8);margin-top:14px;font-size:14.5px}
   .cta-band .btn-white{display:inline-block;margin-top:26px;background:#fff;color:var(--navy);border-radius:2px;padding:14px 34px;font-weight:700;font-size:14px}
-  .cta-band .btn-white + .btn-white{margin-left:10px}
+  .cta-band .btn-secondary{display:inline-block;margin-top:26px;margin-left:10px;border:1px solid rgba(255,255,255,.75);color:#fff;border-radius:2px;padding:13px 33px;font-weight:700;font-size:14px}
   .cta-band .btn-white:hover{background:#f0f0f0}
-  @media(max-width:560px){.cta-band .btn-white{display:block}.cta-band .btn-white + .btn-white{margin-left:0}}
+  .cta-band .btn-secondary:hover{background:rgba(255,255,255,.12)}
+  .cta-band .contact-link{display:block;width:max-content;margin:18px auto 0;color:rgba(255,255,255,.8);font-size:13px;text-decoration:underline;text-underline-offset:4px}
+  .cta-band .contact-link:hover{color:#fff}
+  @media(max-width:560px){.cta-band .btn-white,.cta-band .btn-secondary{display:block}.cta-band .btn-secondary{margin-left:0}}
 
   /* フッター */
   footer{background:#0e1c2f;color:#aeb8c6;padding:52px 0 28px;font-size:13px}
@@ -178,6 +181,7 @@
         <p>SWAN WORKSは、AIのすごい力を“詳しくない人”にこそ届ける事業です。目的をひとつに絞った専用機として、誰もが迷わず使えるアプリを、ひとつずつ丁寧に届けます。</p>
         <div class="btns">
           <a class="btn btn-primary" href="#business">事業を見る</a>
+          <a class="btn btn-ghost" href="#business">公開中のアプリを見る</a>
           <a class="btn btn-ghost" href="#mission">私たちについて</a>
         </div>
         <div class="socials" aria-label="公式SNS">
@@ -226,14 +230,14 @@
   <!-- 事業（プロダクト） -->
   <section id="business">
     <div class="wrap">
-      <div class="sec-head"><span class="lb">BUSINESS</span><h2>事業・プロダクト</h2><p>ひとつの目的に特化した“専用機”を、順次お届けしています。</p></div>
+      <div class="sec-head"><span class="lb">BUSINESS</span><h2>事業・プロダクト</h2><p>パシャっと出品・クイマ・ソラモトは公開中。今すぐお使いいただけます。</p></div>
       <div class="products">
         <div class="pcard">
           <div class="ic"><img src="lp-assets/pasha-icon.png" alt=""></div>
           <div>
             <h3>パシャっと出品 <span class="tag live">公開</span></h3>
             <p>スマホで商品の動画を撮るだけで、フリマ・ネット販売の出品用画像を用意します。写真加工の手間を、まるごと省きます。</p>
-            <a class="lnk" href="https://pasyatto-for-sale.com/" target="_blank" rel="noopener">くわしく見る →</a>
+            <a class="lnk" href="https://pasyatto-for-sale.com/lp.html" target="_blank" rel="noopener">くわしく見る →</a>
           </div>
         </div>
         <div class="pcard">
@@ -249,7 +253,7 @@
           <div>
             <h3>ソラモト <span class="tag live">公開</span></h3>
             <p>テーマを選ぶだけで、読まれる記事づくりを支える専用機。「書かなきゃ」で止まっていた発信を前へ進めます。</p>
-            <a class="lnk" href="https://soramoto.jp/" target="_blank" rel="noopener">くわしく見る →</a>
+            <a class="lnk" href="https://soramoto.jp/lp.html" target="_blank" rel="noopener">くわしく見る →</a>
           </div>
         </div>
         <div class="pcard">
@@ -298,12 +302,13 @@
   </section>
 
   <!-- CTA -->
-  <section id="contact" class="cta-band" style="padding-top:0">
+  <section id="contact" class="cta-band">
     <div style="max-width:1080px;margin:0 auto">
-      <h2>お問い合わせ</h2>
-      <p>サービスに関するご質問・ご相談は、メールにて承っております。</p>
-      <a class="btn-white" href="mailto:swanworks.jp@gmail.com">メールで問い合わせる</a>
-      <a class="btn-white" href="#preregister">先行案内を受け取る</a>
+      <h2>公開中のアプリを使ってみる</h2>
+      <p>目的に合うアプリを選んで、各販売ページからすぐに始められます。</p>
+      <a class="btn-white" href="#business">公開中のアプリを見る</a>
+      <a class="btn-secondary" href="#preregister">今後の製品の先行案内を受け取る</a>
+      <a class="contact-link" href="mailto:swanworks.jp@gmail.com">サービスについて問い合わせる</a>
     </div>
   </section>
 
@@ -313,8 +318,8 @@
 <section id="preregister" class="preregister-section" aria-labelledby="preregister-title">
   <form class="preregister" data-preregister-form novalidate>
     <p class="preregister__eyebrow">EARLY ACCESS</p>
-    <h2 id="preregister-title">先行案内を受け取る</h2>
-    <p>気になるサービスの準備が整い次第、メールでお知らせします。</p>
+    <h2 id="preregister-title">今後の製品の先行案内を受け取る</h2>
+    <p>公開中の製品は今すぐお使いいただけます。未来競馬など、準備中・今後登場する製品の情報を、準備が整い次第メールでお知らせします。</p>
     <div class="preregister__grid" data-preregister-fields>
       <label>氏名（ニックネーム可）<input name="name" type="text" autocomplete="name" maxlength="100" required></label>
       <label>メールアドレス<input name="email" type="email" autocomplete="email" maxlength="254" required></label>
@@ -350,9 +355,9 @@
         </div>
         <div>
           <h4>PRODUCTS</h4>
-          <a href="https://pasyatto-for-sale.com/" target="_blank" rel="noopener">パシャっと出品</a>
+          <a href="https://pasyatto-for-sale.com/lp.html" target="_blank" rel="noopener">パシャっと出品</a>
           <a href="https://quickmarketing-pro.com/lp.html" target="_blank" rel="noopener">クイマ</a>
-          <a href="https://soramoto.jp/" target="_blank" rel="noopener">ソラモト</a>
+          <a href="https://soramoto.jp/lp.html" target="_blank" rel="noopener">ソラモト</a>
         </div>
       </div>
     </div>

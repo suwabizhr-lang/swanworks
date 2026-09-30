@@ -50,9 +50,9 @@ test('public files contain no links to retired landing pages', () => {
 test('homepage product cards and footer link to the official destinations', () => {
   const home = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
   for (const destination of [
-    'https://pasyatto-for-sale.com/',
+    'https://pasyatto-for-sale.com/lp.html',
     'https://quickmarketing-pro.com/lp.html',
-    'https://soramoto.jp/'
+    'https://soramoto.jp/lp.html'
   ]) {
     assert.equal(home.split(`href="${destination}"`).length - 1, 2, destination);
   }
@@ -62,7 +62,15 @@ test('homepage product cards and footer link to the official destinations', () =
 test('Pasha uses its production landing page instead of a local page', () => {
   assert.equal(fs.existsSync(path.join(publicDir, 'lp-pasha.html')), false);
   const home = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
-  assert.match(home, /href="https:\/\/pasyatto-for-sale\.com\/"/);
+  assert.match(home, /href="https:\/\/pasyatto-for-sale\.com\/lp\.html"/);
+});
+
+test('homepage prioritizes live products while keeping preregistration secondary', () => {
+  const home = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
+  assert.match(home, /href="#business">公開中のアプリを見る<\/a>/);
+  assert.match(home, /<section id="contact"[\s\S]*公開中のアプリを使ってみる[\s\S]*href="#business"[\s\S]*href="#preregister"/);
+  assert.match(home, /公開中の製品は今すぐお使いいただけます。/);
+  assert.match(home, /準備中・今後登場する製品/);
 });
 
 test('homepage preserves preregistration DOM, behavior, and CTA tracking', () => {
