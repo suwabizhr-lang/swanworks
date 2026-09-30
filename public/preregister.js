@@ -11,6 +11,18 @@
     return location.pathname.split('/').pop()?.replace(/\.html$/, '') || 'index';
   }
 
+  function trackPreregister(payload) {
+    if (typeof window.gtag !== 'function') return;
+
+    const params = {
+      source: payload.source,
+      products: payload.products.join(',')
+    };
+    const variant = document.body.dataset.ga4Variant;
+    if (variant) params.variant = variant;
+    window.gtag('event', 'generate_lead', params);
+  }
+
   function createForm() {
     const section = document.createElement('section');
     section.id = 'preregister';
@@ -86,6 +98,7 @@
         });
         const result = await response.json();
         if (!response.ok) throw new Error(result.message);
+        trackPreregister(payload);
         form.classList.add('is-complete');
         form.querySelector('[data-preregister-fields]').hidden = true;
         status.textContent = 'ありがとうございます。準備が整い次第ご案内します';
