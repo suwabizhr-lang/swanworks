@@ -15,7 +15,11 @@ const trackedPages = new Map([
   ['/senyouki-v2', 'senyouki-v2.html'],
   ['/senyouki-v2.html', 'senyouki-v2.html'],
   ['/senyouki-v3', 'senyouki-v3.html'],
-  ['/senyouki-v3.html', 'senyouki-v3.html']
+  ['/senyouki-v3.html', 'senyouki-v3.html'],
+  ['/lp-affiliate', 'lp-affiliate.html'],
+  ['/lp-affiliate.html', 'lp-affiliate.html'],
+  ['/affiliate-terms', 'affiliate-terms.html'],
+  ['/affiliate-terms.html', 'affiliate-terms.html']
 ]);
 
 app.disable('x-powered-by');
