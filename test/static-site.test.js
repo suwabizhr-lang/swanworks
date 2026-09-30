@@ -104,6 +104,59 @@ test('homepage links to privacy policy and terms pages', () => {
   assert.match(terms, /href="privacy\.html"/);
 });
 
+test('affiliate landing page and terms are served from extensionless and html paths with GA4', async (t) => {
+  const previousMeasurementId = process.env.GA4_MEASUREMENT_ID;
+  process.env.GA4_MEASUREMENT_ID = 'G-ABC123DEF4';
+  const server = require('../src/server').listen(0);
+  t.after(() => {
+    server.close();
+    if (previousMeasurementId === undefined) delete process.env.GA4_MEASUREMENT_ID;
+    else process.env.GA4_MEASUREMENT_ID = previousMeasurementId;
+  });
+  const baseUrl = `http://127.0.0.1:${server.address().port}`;
+
+  for (const route of ['/lp-affiliate', '/lp-affiliate.html']) {
+    const response = await fetch(baseUrl + route, { redirect: 'manual' });
+    const html = await response.text();
+    assert.equal(response.status, 200);
+    assert.match(html, /創業アンバサダーを、/);
+    assert.match(html, /先着100名/);
+    assert.match(html, /href="affiliate-terms\.html"/);
+    assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-ABC123DEF4/);
+  }
+
+  for (const route of ['/affiliate-terms', '/affiliate-terms.html']) {
+    const response = await fetch(baseUrl + route, { redirect: 'manual' });
+    const html = await response.text();
+    assert.equal(response.status, 200);
+    assert.match(html, /創業アンバサダー・プログラム利用規約/);
+    assert.match(html, /第10条（免責・変更・準拠法）/);
+    assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-ABC123DEF4/);
+  }
+});
+
+test('affiliate landing page has ordered product CTAs, consent link, and inline GA4 tracking', () => {
+  const html = fs.readFileSync(path.join(publicDir, 'lp-affiliate.html'), 'utf8');
+  const destinations = [
+    'https://pasyatto-for-sale.com/affiliate.html',
+    'https://soramoto.jp/affiliate.html',
+    'https://quickmarketing-pro.com/affiliate.html'
+  ];
+  let previousIndex = -1;
+  for (const destination of destinations) {
+    const index = html.indexOf(`href="${destination}"`);
+    assert.ok(index > previousIndex, `missing or incorrectly ordered CTA: ${destination}`);
+    previousIndex = index;
+  }
+  assert.match(html, /登録時に[\s\S]*href="affiliate-terms\.html"[\s\S]*への同意が必要/);
+  assert.match(html, /'event','affiliate_cta'/);
+  assert.match(html, /product:link\.dataset\.product/);
+  assert.doesNotMatch(html, /src="ga4-events\.js"/);
+
+  const home = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
+  assert.match(home, /href="lp-affiliate\.html">創業アンバサダー募集/);
+});
+
 test('homepage and remaining product LP load shared preregistration assets', () => {
   for (const page of ['index.html', 'lp-mirai-keiba.html']) {
     const html = fs.readFileSync(path.join(publicDir, page), 'utf8');
