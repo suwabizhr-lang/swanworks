@@ -73,6 +73,27 @@ test('homepage prioritizes live products while keeping preregistration secondary
   assert.match(home, /準備中・今後登場する製品/);
 });
 
+test('homepage provides the contact form and all planned products', () => {
+  const home = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
+  assert.match(home, /<section id="contact"[\s\S]*data-contact-form[\s\S]*name="name"[\s\S]*name="email"[\s\S]*name="type"[\s\S]*name="message"[\s\S]*aria-live="polite"/);
+  assert.match(home, /<script src="contact\.js" defer><\/script>/);
+  for (const product of ['VoiceKey', 'ソバイル（Sobail）', 'エマイア（EMAIA）', 'AI営業提案システム（仮称：提案すごい君）']) {
+    assert.match(home, new RegExp(product.replace(/[()（）]/g, '\\$&')));
+  }
+
+  const mission = fs.readFileSync(path.join(publicDir, 'mission.html'), 'utf8');
+  assert.match(mission, /href="index\.html#contact">お問い合わせ・ご意見はこちら/);
+  assert.doesNotMatch(mission, /mailto:swanworks\.jp@gmail\.com/);
+});
+
+test('preregistration choices contain the current product lineup', () => {
+  const script = fs.readFileSync(path.join(publicDir, 'preregister.js'), 'utf8');
+  assert.doesNotMatch(script, /MIMAMORO/);
+  for (const product of ['ソバイル（Sobail）', 'エマイア（EMAIA）', 'AI営業提案システム（仮称：提案すごい君）']) {
+    assert.match(script, new RegExp(product.replace(/[()（）]/g, '\\$&')));
+  }
+});
+
 test('homepage preserves preregistration DOM, behavior, and CTA tracking', () => {
   const home = fs.readFileSync(path.join(publicDir, 'index.html'), 'utf8');
   assert.match(home, /<form class="preregister" data-preregister-form novalidate>/);

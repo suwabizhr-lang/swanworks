@@ -1,5 +1,5 @@
 (() => {
-  const PRODUCTS = ['パシャっと出品', 'クイマ', 'ソラモト', '未来競馬', '株スク', 'VoiceKey', 'MIMAMORO'];
+  const PRODUCTS = ['パシャっと出品', 'クイマ', 'ソラモト', '未来競馬', '株スク', 'VoiceKey', 'ソバイル（Sobail）', 'エマイア（EMAIA）', 'AI営業提案システム（仮称：提案すごい君）'];
   const PAGE_PRODUCT = {
     'lp-pasha': 'パシャっと出品',
     'lp-quima': 'クイマ',

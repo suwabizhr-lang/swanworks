@@ -60,6 +60,12 @@ test('rejects unknown products and missing consent', () => {
   assert.throws(() => validatePayload({ name: 'A', email: 'a@example.com', products: ['クイマ'], consent: false, source: 'index' }));
 });
 
+test('accepts the newly announced products', () => {
+  const products = ['ソバイル（Sobail）', 'エマイア（EMAIA）', 'AI営業提案システム（仮称：提案すごい君）'];
+  const result = validatePayload({ name: 'A', email: 'a@example.com', products, consent: true, source: 'index' });
+  assert.deepEqual(result.products, products);
+});
+
 test('creates the required subject and body', () => {
   const message = emailMessage({ id: 'abc', name: 'すわ', email: 'a@example.com', products: ['クイマ', 'ソラモト'], source: 'lp-quima', submittedAt: '2026-09-03T00:00:00.000Z' });
   assert.equal(message.subject, '【先行案内】クイマ, ソラモト');
