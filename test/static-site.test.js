@@ -249,6 +249,15 @@ test('three senyouki variants load CTA tracking with the correct variant', () =>
   assert.match(tracker, /'soramoto\.jp': 'soramoto'/);
 });
 
+test('senyouki v2 and v3 header CTAs stay on one line on mobile', () => {
+  for (const page of ['senyouki-v2.html', 'senyouki-v3.html']) {
+    const html = fs.readFileSync(path.join(publicDir, page), 'utf8');
+    assert.match(html, /\.nav-cta\{[^}]*white-space:nowrap[^}]*\}/, `${page}: header CTA must not wrap`);
+    assert.match(html, /@media\(max-width:720px\)\{[^\n]*\.nav-cta\{font-size:\.7rem;padding:7px 12px\}/, `${page}: header CTA must be compact on mobile`);
+    assert.match(html, /<a class="nav-cta" href="#products">専用機を見る<\/a>/, `${page}: header CTA must use the compact label`);
+  }
+});
+
 test('senyouki variants have distinct positioning and ad-safe v3 copy', () => {
   const v1 = fs.readFileSync(path.join(publicDir, 'senyouki.html'), 'utf8');
   const v2 = fs.readFileSync(path.join(publicDir, 'senyouki-v2.html'), 'utf8');
