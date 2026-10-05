@@ -7,7 +7,9 @@ const PRODUCT_LABELS = Object.freeze([
   '未来競馬',
   '株スク',
   'VoiceKey',
-  'MIMAMORO'
+  'ソバイル（Sobail）',
+  'エマイア（EMAIA）',
+  'AI営業提案システム（仮称：提案すごい君）'
 ]);
 
 class PublicError extends Error {

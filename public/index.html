@@ -97,6 +97,7 @@
   .pcard .ic img{max-width:40px;max-height:40px;width:auto;height:auto}
   .pcard .ic.cloud{background:#eef4fa}
   .pcard .ic.cloud img{max-width:34px;max-height:34px}
+  .pcard .ic.placeholder{font-family:'Montserrat',sans-serif;color:var(--navy);font-weight:700;font-size:12px;letter-spacing:.04em}
   .pcard h3{font-size:17px;color:var(--navy);font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .tag{font-size:11px;font-weight:700;padding:2px 9px;border-radius:2px;letter-spacing:.04em}
   .tag.live{background:#eaf3ec;color:#2c6b3f}
@@ -136,6 +137,16 @@
   .cta-band .btn-secondary:hover{background:rgba(255,255,255,.12)}
   .cta-band .contact-link{display:block;width:max-content;margin:18px auto 0;color:rgba(255,255,255,.8);font-size:13px;text-decoration:underline;text-underline-offset:4px}
   .cta-band .contact-link:hover{color:#fff}
+  .contact-form{max-width:680px;margin:42px auto 0;padding:32px;background:#fff;color:var(--ink);border-radius:4px;text-align:left;display:grid;gap:18px}
+  .contact-form label{display:grid;gap:6px;font-size:13px;font-weight:700;color:var(--navy)}
+  .contact-form input,.contact-form select,.contact-form textarea{width:100%;border:1px solid #cbd2dc;border-radius:3px;padding:11px 12px;background:#fff;color:var(--ink);font:inherit;font-size:14px}
+  .contact-form textarea{min-height:160px;resize:vertical}
+  .contact-form button{border:0;border-radius:2px;padding:14px 24px;background:var(--navy);color:#fff;font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+  .contact-form button:disabled{opacity:.6;cursor:wait}
+  .contact-form__row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .contact-form__status{min-height:1.9em;margin:0!important;color:var(--navy)!important;text-align:center;font-weight:700}
+  .contact-form__honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+  @media(max-width:560px){.contact-form{padding:24px 18px}.contact-form__row{grid-template-columns:1fr}}
   @media(max-width:560px){.cta-band .btn-white,.cta-band .btn-secondary{display:block}.cta-band .btn-secondary{margin-left:0}}
 
   /* フッター */
@@ -264,6 +275,38 @@
             <span class="lnk" style="color:var(--sub)">近日公開</span>
           </div>
         </div>
+        <div class="pcard">
+          <div class="ic placeholder" aria-hidden="true">VK</div>
+          <div>
+            <h3>VoiceKey <span class="tag soon">準備中</span></h3>
+            <p>大切な情報を安全に守り、必要なときに取り出せるAI金庫です。</p>
+            <span class="lnk" style="color:var(--sub)">近日公開</span>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="ic placeholder" aria-hidden="true">SB</div>
+          <div>
+            <h3>ソバイル（Sobail） <span class="tag soon">準備中</span></h3>
+            <p>家族の全世代をやさしく見守る、フィジカルAIアプリです。</p>
+            <span class="lnk" style="color:var(--sub)">近日公開</span>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="ic placeholder" aria-hidden="true">EM</div>
+          <div>
+            <h3>エマイア（EMAIA） <span class="tag soon">準備中</span></h3>
+            <p>AIが一人ひとりの相性を仲立ちするマッチングアプリです。</p>
+            <span class="lnk" style="color:var(--sub)">近日公開</span>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="ic placeholder" aria-hidden="true">AI</div>
+          <div>
+            <h3>AI営業提案システム（仮称：提案すごい君） <span class="tag soon">準備中</span></h3>
+            <p>商品・サービスのベネフィットを網羅し、営業提案を支えるAI営業マンです。</p>
+            <span class="lnk" style="color:var(--sub)">近日公開</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -308,7 +351,24 @@
       <p>目的に合うアプリを選んで、各販売ページからすぐに始められます。</p>
       <a class="btn-white" href="#business">公開中のアプリを見る</a>
       <a class="btn-secondary" href="#preregister">今後の製品の先行案内を受け取る</a>
-      <a class="contact-link" href="mailto:swanworks.jp@gmail.com">サービスについて問い合わせる</a>
+      <form class="contact-form" data-contact-form novalidate>
+        <div class="contact-form__row">
+          <label>お名前<input name="name" type="text" autocomplete="name" maxlength="100" required></label>
+          <label>メールアドレス<input name="email" type="email" autocomplete="email" maxlength="254" required></label>
+        </div>
+        <label>お問い合わせ種別（任意）
+          <select name="type">
+            <option value="">お問い合わせ</option>
+            <option value="ご意見">ご意見</option>
+            <option value="不具合">不具合</option>
+            <option value="その他">その他</option>
+          </select>
+        </label>
+        <label>内容<textarea name="message" maxlength="5000" required></textarea></label>
+        <label class="contact-form__honeypot" aria-hidden="true">Webサイト<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+        <button type="submit">送信する</button>
+        <p class="contact-form__status" data-contact-status role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
@@ -348,6 +408,7 @@
           <a href="mission.html">ミッション</a>
           <a href="philosophy.html">私たちの考え</a>
           <a href="#company">会社情報</a>
+          <a href="#contact">お問い合わせ</a>
           <a href="#preregister">先行案内</a>
           <a href="lp-affiliate.html">創業アンバサダー募集</a>
           <a href="privacy.html">プライバシーポリシー</a>
@@ -366,6 +427,7 @@
 </footer>
 
 <script src="preregister.js" defer></script>
+<script src="contact.js" defer></script>
 <script src="ga4-events.js" defer></script>
 <script>
   const menuButton = document.querySelector('.menubtn');

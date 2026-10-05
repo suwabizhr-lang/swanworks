@@ -1,12 +1,14 @@
 const path = require('node:path');
 const express = require('express');
 const { createPreregisterHandler, createServices } = require('./preregister');
+const { createContactHandler, createContactServices } = require('./contact');
 const { injectGa4 } = require('./analytics');
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
 const publicDir = path.join(__dirname, '..', 'public');
 const attempts = new Map();
+const contactAttempts = new Map();
 const trackedPages = new Map([
   ['/', 'index.html'],
   ['/index.html', 'index.html'],
@@ -73,6 +75,22 @@ app.post('/api/preregister', (req, res, next) => {
 }, (req, res, next) => {
   try {
     return createPreregisterHandler({ services: createServices() })(req, res);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.post('/api/contact', (req, res, next) => {
+  const key = req.ip || 'unknown';
+  const now = Date.now();
+  const recent = (contactAttempts.get(key) || []).filter((time) => now - time < 60_000);
+  if (recent.length >= 5) return res.status(429).json({ ok: false, message: '少し時間をおいて再度お試しください。' });
+  recent.push(now);
+  contactAttempts.set(key, recent);
+  next();
+}, (req, res, next) => {
+  try {
+    return createContactHandler({ services: createContactServices() })(req, res);
   } catch (error) {
     next(error);
   }
