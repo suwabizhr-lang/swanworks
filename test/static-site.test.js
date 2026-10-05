@@ -185,9 +185,9 @@ test('all local image references resolve', () => {
 
 test('three senyouki variants keep their production paths and required CTA links', () => {
   const requiredLinks = [
-    'https://pasyatto-for-sale.com/',
-    'https://quickmarketing-pro.com/',
-    'https://soramoto.jp/'
+    'https://pasyatto-for-sale.com/lp.html',
+    'https://quickmarketing-pro.com/lp.html',
+    'https://soramoto.jp/lp.html'
   ];
 
   for (const page of senyoukiPages) {
@@ -197,6 +197,16 @@ test('three senyouki variants keep their production paths and required CTA links
     for (const href of requiredLinks) {
       assert.ok(html.includes(`href="${href}"`), `${page}: missing CTA ${href}`);
     }
+    assert.match(html, /href="#products"[^>]*>[^<]*(?:選ぶ|見る|試す)/, `${page}: missing hero CTA`);
+    assert.match(html, /初期費用0円/);
+    assert.match(html, /月額サブスク/);
+    assert.match(html, /いつでも解約/);
+    assert.match(html, /無料枠はカード不要/);
+    assert.match(html, /運営者/);
+    assert.match(html, /¥980〜/);
+    assert.match(html, /無料〜/);
+    assert.match(html, /初月¥2,980〜/);
+    assert.match(html, /¥2,980〜/);
   }
 });
 
@@ -216,6 +226,18 @@ test('three senyouki variants load CTA tracking with the correct variant', () =>
   assert.match(tracker, /'pasyatto-for-sale\.com': 'pasyatto'/);
   assert.match(tracker, /'quickmarketing-pro\.com': 'quima'/);
   assert.match(tracker, /'soramoto\.jp': 'soramoto'/);
+});
+
+test('senyouki variants have distinct positioning and ad-safe v3 copy', () => {
+  const v1 = fs.readFileSync(path.join(publicDir, 'senyouki.html'), 'utf8');
+  const v2 = fs.readFileSync(path.join(publicDir, 'senyouki-v2.html'), 'utf8');
+  const v3 = fs.readFileSync(path.join(publicDir, 'senyouki-v3.html'), 'utf8');
+  assert.match(v1, /反スクール|高額スクール/);
+  assert.match(v2, /用途から選ぶから/);
+  assert.match(v2, /終わらせたい仕事から選ぶ/);
+  assert.match(v3, /やりたい仕事から選べる/);
+  assert.match(v3, /収益を保証するサービスではありません/);
+  assert.doesNotMatch(v3, /詐欺|騙され|同じ嘘|AI弱者|月[◯0-9]+万/);
 });
 
 test('senyouki publication does not replace preregistration integration', () => {
