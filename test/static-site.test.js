@@ -186,6 +186,24 @@ test('affiliate landing page has ordered product CTAs, consent link, and inline 
   assert.match(home, /href="lp-affiliate\.html">創業アンバサダー募集/);
 });
 
+test('affiliate landing page accurately describes each ambassador product', () => {
+  const html = fs.readFileSync(path.join(publicDir, 'lp-affiliate.html'), 'utf8');
+  for (const description of [
+    '商品の動画1本から、出品用の画像をつくる専用機。',
+    'テーマを選ぶだけで、記事をつくる専用機。',
+    'お店の情報から、SNS投稿・PR動画・申込フォームをつくる専用機。'
+  ]) {
+    assert.ok(html.includes(description), `missing product description: ${description}`);
+  }
+  for (const incorrectDescription of [
+    '写真から、フリマ出品文をつくる専用機。',
+    '空の写真から、気象を読み解く専用機。',
+    '商品写真から、販促素材をつくる専用機。'
+  ]) {
+    assert.ok(!html.includes(incorrectDescription), `obsolete product description: ${incorrectDescription}`);
+  }
+});
+
 test('homepage and remaining product LP load shared preregistration assets', () => {
   for (const page of ['index.html', 'lp-mirai-keiba.html']) {
     const html = fs.readFileSync(path.join(publicDir, page), 'utf8');
