@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 
 const publicDir = path.join(__dirname, '..', 'public');
 const pages = [
@@ -265,6 +266,53 @@ test('three senyouki variants load CTA tracking with the correct variant', () =>
   assert.match(tracker, /'pasyatto-for-sale\.com': 'pasyatto'/);
   assert.match(tracker, /'quickmarketing-pro\.com': 'quima'/);
   assert.match(tracker, /'soramoto\.jp': 'soramoto'/);
+});
+
+test('product clicks add homepage route UTM values without replacing existing queries', () => {
+  const tracker = fs.readFileSync(path.join(publicDir, 'ga4-events.js'), 'utf8');
+  let clickHandler;
+  const events = [];
+  const context = {
+    URL,
+    document: {
+      body: { dataset: { ga4Variant: 'homepage-v2' } },
+      addEventListener(type, handler) {
+        if (type === 'click') clickHandler = handler;
+      }
+    },
+    window: {
+      location: { href: 'https://swanworks.jp/' },
+      gtag(...args) { events.push(args); }
+    }
+  };
+  vm.runInNewContext(tracker, context);
+
+  for (const [href, campaign] of [
+    ['https://pasyatto-for-sale.com/lp.html', 'normal-pasha-hp'],
+    ['https://quickmarketing-pro.com/lp.html?ref=partner', 'normal-quima-hp'],
+    ['https://soramoto.jp/lp.html', 'normal-soramoto-hp']
+  ]) {
+    const link = { href, dataset: {} };
+    clickHandler({ target: { closest: () => link } });
+    const destination = new URL(link.href);
+    assert.equal(destination.searchParams.get('utm_source'), 'swanworks');
+    assert.equal(destination.searchParams.get('utm_medium'), 'referral');
+    assert.equal(destination.searchParams.get('utm_campaign'), campaign);
+    if (href.includes('ref=')) assert.equal(destination.searchParams.get('ref'), 'partner');
+    assert.equal(events.at(-1)[2].destination_url, link.href);
+  }
+
+  const existing = {
+    href: 'https://soramoto.jp/lp.html?ref=kept&utm_source=custom&utm_medium=email&utm_campaign=launch',
+    dataset: {}
+  };
+  clickHandler({ target: { closest: () => existing } });
+  const preserved = new URL(existing.href);
+  assert.equal(preserved.searchParams.get('ref'), 'kept');
+  assert.equal(preserved.searchParams.get('utm_source'), 'custom');
+  assert.equal(preserved.searchParams.get('utm_medium'), 'email');
+  assert.equal(preserved.searchParams.get('utm_campaign'), 'launch');
+  assert.equal(events.at(-1)[2].destination_url, existing.href);
 });
 
 test('senyouki v2 and v3 header CTAs stay on one line on mobile', () => {

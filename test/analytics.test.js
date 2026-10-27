@@ -32,7 +32,14 @@ test('tracked HTTP pages honor the runtime environment fallback', async (t) => {
   process.env.GA4_MEASUREMENT_ID = 'G-ABC123DEF4';
   const enabled = await (await fetch(`${baseUrl}/senyouki-v2`)).text();
   assert.match(enabled, /googletagmanager\.com\/gtag\/js\?id=G-ABC123DEF4/);
-  const untrackedPage = await (await fetch(`${baseUrl}/mission`)).text();
+  for (const page of ['mission', 'philosophy', 'privacy', 'terms']) {
+    for (const suffix of ['', '.html']) {
+      const trackedPage = await (await fetch(`${baseUrl}/${page}${suffix}`)).text();
+      assert.match(trackedPage, /googletagmanager\.com\/gtag\/js\?id=G-ABC123DEF4/);
+      assert.match(trackedPage, /gtag\('config', 'G-ABC123DEF4'\)/);
+    }
+  }
+  const untrackedPage = await (await fetch(`${baseUrl}/lp-mirai-keiba.html`)).text();
   assert.doesNotMatch(untrackedPage, /googletagmanager|gtag\('config'/);
   delete process.env.GA4_MEASUREMENT_ID;
 });

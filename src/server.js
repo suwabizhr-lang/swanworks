@@ -21,7 +21,15 @@ const trackedPages = new Map([
   ['/lp-affiliate', 'lp-affiliate.html'],
   ['/lp-affiliate.html', 'lp-affiliate.html'],
   ['/affiliate-terms', 'affiliate-terms.html'],
-  ['/affiliate-terms.html', 'affiliate-terms.html']
+  ['/affiliate-terms.html', 'affiliate-terms.html'],
+  ['/mission', 'mission.html'],
+  ['/mission.html', 'mission.html'],
+  ['/philosophy', 'philosophy.html'],
+  ['/philosophy.html', 'philosophy.html'],
+  ['/privacy', 'privacy.html'],
+  ['/privacy.html', 'privacy.html'],
+  ['/terms', 'terms.html'],
+  ['/terms.html', 'terms.html']
 ]);
 
 app.disable('x-powered-by');
