@@ -29,7 +29,9 @@ const trackedPages = new Map([
   ['/privacy', 'privacy.html'],
   ['/privacy.html', 'privacy.html'],
   ['/terms', 'terms.html'],
-  ['/terms.html', 'terms.html']
+  ['/terms.html', 'terms.html'],
+  ['/products', 'products.html'],
+  ['/products.html', 'products.html']
 ]);
 
 app.disable('x-powered-by');
