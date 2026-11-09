@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Instagram デザイン一覧</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;padding:40px;background:#e9dcc0;color:#12233b;font-family:system-ui,sans-serif}h1{margin:0 0 10px;font-size:32px}p{margin:0 0 36px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:32px}.item{margin:0}.preview{position:relative;width:100%;overflow:hidden;background:#12233b;border-radius:8px;box-shadow:0 8px 24px #12233b26}.preview.square{aspect-ratio:4/5}.preview.portrait{aspect-ratio:9/16}.preview iframe{position:absolute;inset:0;width:1080px;height:1350px;border:0;transform-origin:top left;transform:scale(var(--scale))}.preview.portrait iframe{height:1920px}figcaption{margin-top:10px;font-size:14px;font-weight:650;overflow-wrap:anywhere}
+  </style>
+</head>
+<body>
+  <h1>Instagram デザイン一覧</h1>
+  <p>各プレビューを選ぶと、元の HTML を開けます。</p>
+  <main class="grid" id="gallery"></main>
+  <script>
+    const files = [
+      ['highlight-01-hajimeni.html','portrait'],['highlight-02-pasha.html','portrait'],['highlight-03-quima.html','portrait'],['highlight-04-soramoto.html','portrait'],['highlight-05-process.html','portrait'],
+      ['carousel1-01.html','square'],['carousel1-02.html','square'],['carousel1-03.html','square'],['carousel1-04.html','square'],['carousel1-05.html','square'],['carousel1-06.html','square'],
+      ['carousel2-01.html','square'],['carousel2-02.html','square'],['carousel2-03.html','square'],['carousel2-04.html','square'],['carousel2-05.html','square'],
+      ['reel-cover-senyouki.html','portrait']
+    ];
+    const gallery = document.querySelector('#gallery');
+    files.forEach(([file,shape]) => {
+      const item=document.createElement('figure'); item.className='item';
+      item.innerHTML=`<a href="${file}"><div class="preview ${shape}"><iframe src="${file}" title="${file}" loading="lazy" scrolling="no"></iframe></div></a><figcaption>${file}</figcaption>`;
+      gallery.append(item);
+    });
+    const resize=()=>document.querySelectorAll('.preview').forEach(el=>el.style.setProperty('--scale',el.clientWidth/1080));
+    addEventListener('resize',resize); resize();
+  </script>
+</body>
+</html>
