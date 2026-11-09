@@ -9,7 +9,7 @@
     "dev": "node --watch src/server.js",
     "test": "node --test",
     "build": "npm run check",
-    "check": "node --check src/server.js && node --check src/preregister.js && node --check src/contact.js && node --check src/analytics.js && node --check public/preregister.js && node --check public/contact.js && node --check public/ga4-events.js"
+    "check": "node --check src/server.js && node --check src/preregister.js && node --check src/contact.js && node --check src/analytics.js && node --check public/preregister.js && node --check public/contact.js && node --check public/ga4-events.js && node --check public/products-data.js && node --check public/products-page.js"
   },
   "engines": {
     "node": ">=20"
