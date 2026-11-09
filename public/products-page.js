@@ -52,7 +52,10 @@
     const link = event.target.closest('[data-product-link]');
     if (!link) return;
     event.preventDefault();
-    if (link.dataset.opening === 'true') return;
+    if (link.dataset.opening === 'true') {
+      event.stopPropagation();
+      return;
+    }
 
     link.dataset.opening = 'true';
     link.setAttribute('aria-disabled', 'true');

@@ -87,7 +87,12 @@ test('CTA shows progress, ignores double clicks, opens safely, and explains popu
     setAttribute: (name) => attributes.add(name),
     removeAttribute: (name) => attributes.delete(name)
   };
-  const event = { target: { closest: () => link }, preventDefault() {} };
+  let propagationStops = 0;
+  const event = {
+    target: { closest: () => link },
+    preventDefault() {},
+    stopPropagation() { propagationStops += 1; }
+  };
   const opened = { opener: 'source', location: { href: '' } };
   let openCount = 0;
   const originalOpen = global.open;
@@ -102,6 +107,7 @@ test('CTA shows progress, ignores double clicks, opens safely, and explains popu
     assert.equal(opened.location.href, link.href);
     page.handleProductClick(event);
     assert.equal(openCount, 1);
+    assert.equal(propagationStops, 1, 'the duplicate click must not reach the GA4 document handler');
 
     link.dataset.opening = '';
     global.open = () => null;
@@ -119,5 +125,21 @@ test('every corporate page with a global navigation links to the product hub', (
   for (const file of ['index.html', 'mission.html', 'philosophy.html', 'senyouki.html', 'senyouki-v2.html', 'senyouki-v3.html', 'products.html']) {
     const html = fs.readFileSync(path.join(publicDir, file), 'utf8');
     assert.match(html, /<nav[\s\S]*?href="products\.html"[^>]*>製品一覧<\/a>[\s\S]*?<\/nav>/, file);
+  }
+});
+
+test('legacy product hub navigation links use the existing menu styles', () => {
+  const expectedClasses = new Map([
+    ['senyouki.html', 'cta'],
+    ['senyouki-v2.html', 'nav-cta'],
+    ['senyouki-v3.html', 'nav-cta']
+  ]);
+  for (const [file, className] of expectedClasses) {
+    const html = fs.readFileSync(path.join(publicDir, file), 'utf8');
+    assert.match(
+      html,
+      new RegExp(`<a class="${className}" href="products\\.html">製品一覧</a>|<a href="products\\.html" class="${className}">製品一覧</a>`),
+      file
+    );
   }
 });
