@@ -52,6 +52,7 @@
     const link = event.target.closest('[data-product-link]');
     if (!link) return;
     event.preventDefault();
+    event.stopPropagation();
     if (link.dataset.opening === 'true') return;
 
     link.dataset.opening = 'true';
@@ -69,6 +70,12 @@
     }
     opened.opener = null;
     opened.location.href = link.href;
+    if (typeof root.gtag === 'function') root.gtag('event', 'select_product', {
+      variant: link.dataset.ga4Variant,
+      product: link.dataset.ga4Product,
+      destination_url: link.href,
+      transport_type: 'beacon'
+    });
     root.setTimeout(() => resetLink(link), 2000);
   }
 
