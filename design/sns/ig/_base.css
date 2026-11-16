@@ -23,13 +23,15 @@ body.square { width:1080px; height:1350px; }
 .slide .brand img { width:48px; height:48px; }
 .slide-head { margin-top:112px; }
 .slide-head h1 { margin:22px 0 30px; font-size:64px; line-height:1.35; }
+.slide-content { display:flex; flex-direction:column; justify-content:center; height:100%; }
+.slide-content .slide-head, .slide-content .app-top { margin-top:0; }
 .card { background:#fffaf0; border:2px solid var(--sand); border-radius:30px; box-shadow:0 16px 40px rgba(18,35,59,.08); }
 .bullet-list { display:grid; gap:30px; margin-top:70px; }
 .bullet { display:flex; align-items:center; gap:24px; padding:30px 34px; font-size:35px; font-weight:600; }
 .bullet:before { content:""; flex:0 0 13px; height:13px; border-radius:50%; background:var(--gold); }
 .product-grid { display:grid; gap:22px; margin-top:38px; }
 .product-row { display:grid; grid-template-columns:112px 1fr; align-items:center; gap:26px; padding:23px 28px; }
-.product-row img { width:96px; height:96px; object-fit:contain; border-radius:20px; }
+.product-row img { width:96px; height:96px; padding:8px; object-fit:contain; border-radius:20px; background:white; }
 .product-row h2 { margin:0 0 7px; font-size:34px; }
 .product-row p { margin:0; font-size:25px; line-height:1.55; }
 .app-slide { padding:70px 76px; }
