@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 
 const publicDir = path.join(__dirname, '..', 'public');
 const products = require('../public/products-data');
@@ -87,7 +88,7 @@ test('CTA shows progress, ignores double clicks, opens safely, and explains popu
     setAttribute: (name) => attributes.add(name),
     removeAttribute: (name) => attributes.delete(name)
   };
-  const event = { target: { closest: () => link }, preventDefault() {} };
+  const event = { target: { closest: () => link }, preventDefault() {}, stopPropagation() {} };
   const opened = { opener: 'source', location: { href: '' } };
   let openCount = 0;
   const originalOpen = global.open;
@@ -115,9 +116,95 @@ test('CTA shows progress, ignores double clicks, opens safely, and explains popu
   }
 });
 
+test('product list owns tracking through bubbling, double clicks, popup failure, and retries', () => {
+  const documentListeners = {};
+  const listListeners = {};
+  const calls = [];
+  const timers = [];
+  const label = { textContent: '無料で試す' };
+  const error = { hidden: true };
+  const link = {
+    href: page.productUrl(products[0], 'https://swanworks.jp/products'),
+    dataset: { ga4Product: 'pasyatto', ga4Variant: 'products-hub' },
+    parentElement: { querySelector: () => error },
+    querySelector: () => label,
+    setAttribute() {},
+    removeAttribute() {}
+  };
+  const list = {
+    addEventListener: (type, listener) => { listListeners[type] = listener; },
+    querySelectorAll: () => [link]
+  };
+  const opened = { location: { href: '' } };
+  let popupAllowed = true;
+  let openCount = 0;
+  const context = vm.createContext({
+    URL,
+    SWANWORKS_PRODUCTS: products,
+    location: { href: 'https://swanworks.jp/products' },
+    document: {
+      body: { dataset: { ga4Variant: 'products-hub' } },
+      querySelector: () => list,
+      addEventListener: (type, listener) => { documentListeners[type] = listener; }
+    },
+    open: () => { openCount += 1; return popupAllowed ? opened : null; },
+    setTimeout: (callback) => { timers.push(callback); },
+    addEventListener() {},
+    gtag: (...args) => {
+      if (args[1] === 'select_product') assert.equal(opened.location.href, link.href);
+      calls.push(args);
+    }
+  });
+  context.window = context;
+  for (const script of ['ga4-events.js', 'products-page.js']) {
+    vm.runInContext(fs.readFileSync(path.join(publicDir, script), 'utf8'), context);
+  }
+  documentListeners.DOMContentLoaded();
+  const click = () => {
+    const event = {
+      target: { closest: () => link },
+      stopped: false,
+      prevented: false,
+      preventDefault() { this.prevented = true; },
+      stopPropagation() { this.stopped = true; }
+    };
+    listListeners.click(event);
+    if (!event.stopped) documentListeners.click(event);
+    assert.equal(event.prevented, true);
+  };
+  const selections = () => calls.filter((args) => args[1] === 'select_product');
+
+  click();
+  click();
+  assert.equal(openCount, 1);
+  assert.equal(selections().length, 1);
+  assert.deepEqual(JSON.parse(JSON.stringify(selections()[0])), ['event', 'select_product', {
+    variant: 'products-hub',
+    product: 'pasyatto',
+    destination_url: link.href,
+    transport_type: 'beacon'
+  }]);
+  timers.shift()();
+  popupAllowed = false;
+  click();
+  assert.equal(selections().length, 1);
+  assert.equal(error.hidden, false);
+  assert.equal(link.dataset.opening, '');
+  popupAllowed = true;
+  click();
+  assert.equal(selections().length, 2);
+  assert.equal(error.hidden, true);
+  timers.shift()();
+  context.gtag = undefined;
+  click();
+  assert.equal(openCount, 4);
+  assert.equal(opened.location.href, link.href);
+  assert.equal(selections().length, 2);
+});
+
 test('every corporate page with a global navigation links to the product hub', () => {
   for (const file of ['index.html', 'mission.html', 'philosophy.html', 'senyouki.html', 'senyouki-v2.html', 'senyouki-v3.html', 'products.html']) {
     const html = fs.readFileSync(path.join(publicDir, file), 'utf8');
-    assert.match(html, /<nav[\s\S]*?href="products\.html"[^>]*>製品一覧<\/a>[\s\S]*?<\/nav>/, file);
+    assert.match(html, /<nav[\s\S]*?href="(?:products\.html|\/products)"[^>]*>製品一覧<\/a>[\s\S]*?<\/nav>/, file);
   }
 });
